@@ -38,6 +38,7 @@ Chromium Issue Tracker, and provide:
     for logging certificates
   * The Maximum Merge Delay (MMD) of the Log
   * All of the Accepted Root Certificates of the Log
+  * Whether the Log will reject certificate logging requests based on the Permissible Logging Rejection Criteria and if so, which criteria will be used as a basis for rejection by this Log.
 
 After acceptance, Google will monitor the Log, including random compliance
 testing, prior to its inclusion within Chromium. Such compliance testing will
@@ -57,7 +58,7 @@ operate the Log in accordance with this Policy. Log Operators must:
   * Have no outage that exceeds an MMD of more than 24 hours.
     Outages include, but are not limited to: network level outages, expiration
     of the Log’s SSL certificate, a failure to accept new Certificates to be
-    logged, HTTP response status codes other than 200, or responses that
+    logged (with the exception of the Permissible Logging Rejection Criteria defined below), HTTP response status codes other than 200, or responses that
     include data that does not conform to RFC 6962.
   * Conform to RFC 6962, including the implementation of all API endpoints
     defined within Section 4 of RFC 6962
@@ -86,6 +87,18 @@ Google will notify Log Operators, via announcements to the
 of changes to these requirements. Log Operators that fail to meet these
 requirements will be in violation of the Log Inclusion Policy, which may
 result in removal of the Log from the Chromium projects.
+
+## Permissible Logging Rejection Criteria
+
+Under certain circumstances, it is permissible for a Log to reject logging requests for certain classes of certificates. A log rejection means that the Log will not incorporate a given certificate entry into the Merkle Tree even if the certificate chains to an Accepted Root Certificate. In accordance with this policy, rejected logging requests must not be issued an SCT by the Log. 
+
+If specified within the Log's Chromium Application, a log may reject requests to log certificates that chain up to an Accepted Root Certificate based on one or more of the following bases: 
+
+  * **Revocation Status**: If the Log determines that a certificate has been revoked by the issuing CA, it may reject the logging request. If the Log is unable to determine revocation status, it must accept the logging request and incorporate the entry into the Merkle Tree within the Log's MMD.
+  * **Certificate Expired**: If a logging request includes a certificate whose notAfter timestamp represents a point in time before the logging request is made, the Log may refuse to log the certificate entry.
+  * **Certificate Lifetime**: A log may specify a natural end date for log growth by specifying a sunset date in the future after which it will not accept certificates whose notAfter timestamp comes after the Log's sunset date. This mechanism allows Log Operators to temporally shard a set of logs to prevent unbounded growth and keep the Log within an operationally manageable tree size. If the Log Operator wishes to establish a sunset date, it must be specified in the Log's Chromium application and cannot be changed once the Log has been accepted.
+  
+The primary purpose of the permissible rejection criteria is to protect trusted Logs from being spammed with log requests from parties attempting to DoS newly accepted Logs.
 
 ## Policy Violations
 
