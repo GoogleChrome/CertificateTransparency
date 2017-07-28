@@ -38,7 +38,7 @@ Chromium Issue Tracker, and provide:
     for logging certificates
   * The Maximum Merge Delay (MMD) of the Log
   * All of the Accepted Root Certificates of the Log
-  * Whether the Log will reject certificate logging requests based on the Permissible Logging Rejection Criteria and if so, which criteria will be used as a basis for rejection by this Log.
+  * Whether the Log will reject certificate logging requests based on any of the Permissible Logging Rejection Criteria and if so, which criteria will be used as a basis for rejection by this Log.
 
 After acceptance, Google will monitor the Log, including random compliance
 testing, prior to its inclusion within Chromium. Such compliance testing will
@@ -90,15 +90,15 @@ result in removal of the Log from the Chromium projects.
 
 ## Permissible Logging Rejection Criteria
 
-Under certain circumstances, it is permissible for a Log to reject logging requests for certain classes of certificates. A log rejection means that the Log will not incorporate a given certificate entry into the Merkle Tree even if the certificate chains to an Accepted Root Certificate. In accordance with this policy, rejected logging requests must not be issued an SCT by the Log. 
+Under certain circumstances, it is permissible for a Log to reject logging requests for certain classes of certificates. A logging rejection means that the Log will not incorporate a given certificate entry into the Merkle Tree even if the certificate chains to an Accepted Root Certificate. In accordance with this policy, rejected logging requests must not be issued an SCT by the Log. 
 
 If specified within the Log's Chromium Application, a log may reject requests to log certificates that chain up to an Accepted Root Certificate based on one or more of the following bases: 
 
   * **Revocation Status**: If the Log determines that a certificate has been revoked by the issuing CA, it may reject the logging request. If the Log is unable to determine revocation status, it must accept the logging request and incorporate the entry into the Merkle Tree within the Log's MMD.
   * **Certificate Expired**: If a logging request includes a certificate whose notAfter timestamp represents a point in time before the logging request is made, the Log may refuse to log the certificate entry.
-  * **Certificate Lifetime**: A log may specify a natural end date for log growth by specifying a sunset date in the future after which it will not accept certificates whose notAfter timestamp comes after the Log's sunset date. This mechanism allows Log Operators to temporally shard a set of logs to prevent unbounded growth and keep the Log within an operationally manageable tree size. If the Log Operator wishes to establish a sunset date, it must be specified in the Log's Chromium application and cannot be changed once the Log has been accepted.
+  * **Certificate Lifetime**: In order to control the growth of a Log’s size, a Log Operator may specify a certificate expiry range for that Log, which must be included in the Log’s Chromium Application in the form of two dates. The certificate expiry range allows a Log to reject logging requests for certificates whose NotAfter timestamp falls outside of this range, thus partitioning the set of publicly-trusted certificates that the Log will accept. In the spirit of operating Logs in the public interest, Log Operators who take advantage of this limitation are strongly encouraged to operate multiple Logs with staggered certificate expiry ranges to allow for logging of all currently valid publicly-trusted certificates. 
   
-The primary purpose of the permissible rejection criteria is to protect trusted Logs from being spammed with log requests from parties attempting to DoS newly accepted Logs.
+The primary purpose of the permissible rejection criteria is to provide Log Operators with greater control over the growth and operation of a given Log instance while still performing the core functions of a trusted CT Log. Additionally, these criteria allow logs to be shielded from certain types of Denial of Service such as being spammed with the corpus of all expired certificates and being unable to respond to legitimate logging requests.
 
 ## Policy Violations
 
