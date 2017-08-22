@@ -32,8 +32,9 @@ Chromium Issue Tracker, and provide:
     * A list of person(s) authorized to represent the Log Operator
   * A public HTTP endpoint that responds to all Log Client Messages indicated
     in RFC 6962, Section 4
-  * The Log's public key, attached as a binary file containing the DER
-    encoding of the SubjectPublicKeyInfo ASN.1 structure
+  * The Log's public key, attached as a PEM text file, as specified in
+    [RFC 7468, section 13: Textual Encoding of Subject Public Key Info](
+    https://tools.ietf.org/html/rfc7468#section-13).
   * A description of the Log, including applicable policies or requirements
     for logging certificates
   * The Maximum Merge Delay (MMD) of the Log
