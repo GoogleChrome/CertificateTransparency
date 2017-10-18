@@ -70,13 +70,13 @@ certificate.
 
 | Lifetime of Certificate | Number of SCTs from distinct logs |
 |:---:|:---:|
-| < 15 months | 2 |
-| >= 15, <= 27 months | 3<sup>[1](#footnote1)</sup> |
-| > 27, <= 39 months | 4 |
-| > 39 months | 5 |
+| < 458 days | 2 |
+| >= 458 days, <= 823 days | 3<sup>[1](#footnote1)</sup> |
+| > 823 days, <= 1188 days | 4 |
+| > 1188 days | 5 |
 
 <a name="footnote1"><sup>1</sup></a> EV certificates should never have a
-lifetime over 27 months.
+lifetime over 823 days (27 months).
 
 Note that, so long as one of the above conditions is met by some combination
 of SCTs presented in the handshake, additional SCTs, regardless of the status
