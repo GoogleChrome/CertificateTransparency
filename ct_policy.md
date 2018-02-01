@@ -45,14 +45,14 @@ A certificate is “CT qualified” if it meets one of the following criteria:
      **AND** there is at least one SCT from a Google Log, qualified at the time
      of check, presented via any method;
 
-     **AND** there is at least one SCT from a non­Google Log, qualified at time
+     **AND** there is at least one SCT from a non-Google Log, qualified at time
      of check, presented via any method.
   1. An Embedded SCT from a log qualified at the time of check is presented;
 
      **AND** there is at least one Embedded SCT from a Google Log, once or
      currently qualified;
 
-     **AND** there is at least one Embedded SCT from a non­Google Log, once or
+     **AND** there is at least one Embedded SCT from a non-Google Log, once or
      currently qualified;
 
      **AND** there are Embedded SCTs from AT LEAST the number of logs once or
@@ -71,8 +71,8 @@ certificate.
 | Lifetime of Certificate | Number of SCTs from distinct logs |
 |:---:|:---:|
 | < 15 months | 2 |
-| >= 15, <= 27 months | 3<sup>[1](#footnote1)</sup> |
-| > 27, <= 39 months | 4 |
+| >= 15, <= 27 months | 3 |
+| > 27, <= 39 months | 4<sup>[1](#footnote1)</sup> |
 | > 39 months | 5 |
 
 <a name="footnote1"><sup>1</sup></a> EV certificates should never have a
