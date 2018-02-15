@@ -64,3 +64,6 @@ certificates or inspecting the certificates that have been logged.
 |[Venafi](https://www.venafi.com)|Venafi CT Log Server|https://ctlog.api.venafi.com/ct/v1|24 hours|*Revision:* https://crrev.com/349170 <br/> Chrome: 47 | Last Accepted SCT: 28 Feb 2017 18:42:26 UTC.|
 |[WoSign](https://www.wosign.com/)|WoSign Log|https://ctlog.wosign.com/|24 hours|*Revision:* https://crrev.com/414378 <br/> Chrome: 54 | 12 Feb 2018 23:59:59 UTC.|
 |[StartCom](https://www.startssl.com/)|StartCom CT Log|https://ct.startssl.com/|24 hours|*Revision:* https://crrev.com/414440 <br/> Chrome: 54 | 12 Feb 2018 23:59:59 UTC.|
+
+## Policy Version
+Chromium Certificate Transparency Policy Version 1.0
