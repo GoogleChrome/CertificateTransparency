@@ -54,6 +54,14 @@ certificates or inspecting the certificates that have been logged.
 |[Comodo](https://www.comodo.com)|Comodo 'Mammoth' Log|https://mammoth.ct.comodo.com/|24 hours|*Revision:* https://crrev.com/482145 <br/> Chrome: 60|
 |[DigiCert](https://www.digicert.com)|DigiCert Log Server 2|https://ct2.digicert-ct.com/log/|24 hours|*Revision:* https://crrev.com/481160 <br/> Chrome: 60|
 |[DigiCert](https://www.digicert.com)|Symantec 'Sirius' Log|https://sirius.ws.symantec.com/|24 hours|*Revision:* https://crrev.com/481160 <br/> Chrome: 60|
+|[Google](https://www.google.com)|Google 'Argon2018' Log|https://ct.googleapis.com/logs/argon2018/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Google](https://www.google.com)|Google 'Argon2019' Log|https://ct.googleapis.com/logs/argon2019/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Google](https://www.google.com)|Google 'Argon2020' Log|https://ct.googleapis.com/logs/argon2020/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Google](https://www.google.com)|Google 'Argon2021' Log|https://ct.googleapis.com/logs/argon2021/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2018' Log|https://ct.cloudflare.com/logs/nimbus2018/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2019' Log|https://ct.cloudflare.com/logs/nimbus2019/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2020' Log|https://ct.cloudflare.com/logs/nimbus2020/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2021' Log|https://ct.cloudflare.com/logs/nimbus2021/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
 
 ### Once, but no longer, Qualified Logs
 
