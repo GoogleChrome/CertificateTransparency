@@ -5,7 +5,7 @@ This document details the criteria for a certificate to be considered
 *CT Qualified*.
 
 In order to improve the security of Extended Validation (EV) certificates,
-Google Chrome requires that all certificates issued after 1 Jan 2015 be CT
+Google Chrome requires that all certificates issued after 1 Jan 2015 are CT
 Qualified in order to be recognized as EV.
 
 In order to improve the security of the Certificate Authority (CA) ecosystem,
@@ -13,7 +13,7 @@ Google Chrome may require that certificates be considered CT Qualified in
 order to be recognized as trusted. This may be in response to security
 incidents, in which certificates from a particular CA are required to be CT
 Qualified in order to ensure compliance with stated policies and industry
-requirements. This may also be based on site operators signalling that
+requirements. This may also be based on site operators signaling that
 certificates for a particular domain be CT Qualified in order to ensure
 transparency of the issued certificates.
 
@@ -21,7 +21,7 @@ Chrome’s current Certificate Transparency implementation is as follows:
 
   1. Google runs three geographically diverse CT logs which accept all
      certificates issued by CAs accepted by any major browser.
-  1. Google continues to invite other organisations to deploy CT logs in order
+  1. Google continues to invite other organizations to deploy CT logs in order
      to improve robustness.
   1. On 1 Jan 2015 Chrome created a whitelist of certificates that contained
      EV policy OIDs included or pending inclusion in Chrome, that were logged
