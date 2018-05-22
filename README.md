@@ -62,6 +62,11 @@ certificates or inspecting the certificates that have been logged.
 |[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2019' Log|https://ct.cloudflare.com/logs/nimbus2019/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
 |[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2020' Log|https://ct.cloudflare.com/logs/nimbus2020/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
 |[Cloudflare](https://www.cloudflare.com)|Cloudflare 'Nimbus2021' Log|https://ct.cloudflare.com/logs/nimbus2021/|24 hours|*Revision:* https://crrev.com/540254 <br/> Chrome: 65|
+|[DigiCert](https://www.digicert.com)|DigiCert 'Yeti2018' Log|https://yeti2018.ct.digicert.com/log|24 hours|*Revision:* https://crrev.com/559734 <br/> Chrome: 67|
+|[DigiCert](https://www.digicert.com)|DigiCert 'Yeti2019' Log|https://yeti2019.ct.digicert.com/log|24 hours|*Revision:* https://crrev.com/559734 <br/> Chrome: 67|
+|[DigiCert](https://www.digicert.com)|DigiCert 'Yeti2020' Log|https://yeti2020.ct.digicert.com/log|24 hours|*Revision:* https://crrev.com/559734 <br/> Chrome: 67|
+|[DigiCert](https://www.digicert.com)|DigiCert 'Yeti2021' Log|https://yeti2021.ct.digicert.com/log|24 hours|*Revision:* https://crrev.com/559734 <br/> Chrome: 67|
+|[DigiCert](https://www.digicert.com)|DigiCert 'Yeti2022' Log|https://yeti2022.ct.digicert.com/log|24 hours|*Revision:* https://crrev.com/559734 <br/> Chrome: 67|
 
 ### Once, but no longer, Qualified Logs
 
