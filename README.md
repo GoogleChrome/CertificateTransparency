@@ -34,7 +34,7 @@ that are recognized by Chromium. It includes information about who operates the
 log, the name the log has been given, and the URL that can be used for logging
 certificates or inspecting the certificates that have been logged.
 
-**_Note: The authoritative list is maintained in the [Chromium code base](https://cs.chromium.org/chromium/src/net/data/ssl/certificate_transparency/log_list.json). This is merely informational._**
+**_Note: The authoritative list is maintained in the [Chromium code base](https://cs.chromium.org/chromium/src/components/certificate_transparency/data/log_list.json). This is merely informational._**
 
 ### Qualified Logs
 
