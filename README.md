@@ -46,7 +46,6 @@ certificates or inspecting the certificates that have been logged.
 |[Google](https://www.google.com)|Google 'Rocketeer' Log|https://ct.googleapis.com/rocketeer|24 hours|*Revision:* https://crrev.com/325382 <br/> Chrome: 43|
 |[DigiCert](https://www.digicert.com)|Symantec Log|https://ct.ws.symantec.com|24 hours|*Revision:* https://crrev.com/483625 <br/> Chrome: 45|
 |[DigiCert](https://www.digicert.com)|Symantec 'Vega' Log|https://vega.ws.symantec.com/|24 hours|*Revision:* https://crrev.com/376143 <br/> Chrome: 50|
-|[CNNIC](https://cnnic.cn)|CNNIC CT Log|https://ctserver.cnnic.cn/|24 hours|*Revision:* https://crrev.com/396817 <br/> Chrome: 53|
 |[Google](https://www.google.com)|Google 'Skydiver' Log|https://ct.googleapis.com/skydiver/|24 hours|*Revision:* https://crrev.com/429670 <br/> Chrome: 55|
 |[Google](https://www.google.com)|Google 'Icarus' Log|https://ct.googleapis.com/icarus/|24 hours|*Revision:* https://crrev.com/429670 <br/> Chrome: 55|
 |[Venafi](https://www.venafi.com)|Venafi Gen2 CT log|https://ctlog-gen2.api.venafi.com/|24 hours|*Revision:* https://crrev.com/471318 <br/> Chrome: 59|
@@ -77,6 +76,7 @@ certificates or inspecting the certificates that have been logged.
 |[Venafi](https://www.venafi.com)|Venafi CT Log Server|https://ctlog.api.venafi.com/ct/v1|24 hours|*Revision:* https://crrev.com/349170 <br/> Chrome: 47 | Last Accepted SCT: 28 Feb 2017 18:42:26 UTC.|
 |[WoSign](https://www.wosign.com/)|WoSign Log|https://ctlog.wosign.com/|24 hours|*Revision:* https://crrev.com/414378 <br/> Chrome: 54 | 12 Feb 2018 23:59:59 UTC.|
 |[StartCom](https://www.startssl.com/)|StartCom CT Log|https://ct.startssl.com/|24 hours|*Revision:* https://crrev.com/414440 <br/> Chrome: 54 | 12 Feb 2018 23:59:59 UTC.|
+|[CNNIC](https://cnnic.cn)|CNNIC CT Log|https://ctserver.cnnic.cn/|24 hours|*Revision:* https://crrev.com/396817 <br/> Chrome: 53| 18 Sep 2018 00:00:00 UTC.|
 
 ## Policy Version
 Chromium Certificate Transparency Policy Version 1.0
