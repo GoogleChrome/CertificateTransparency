@@ -85,7 +85,9 @@ certificates or inspecting the certificates that have been logged.
 | [DigiCert](https://www.digicert.com/)     | Symantec 'Sirius' Log       | https://sirius.ws.symantec.com/            | 24 hours | [Chrome 60](https://crrev.com/481160) | 16 Feb 2019 00:00:00 UTC.   | 
 | [Google](https://www.google.com/)         | Google 'Argon2018' Log      | https://ct.googleapis.com/logs/argon2018/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
 | [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2018' Log | https://ct.cloudflare.com/logs/nimbus2018/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2018' Log     | https://yeti2018.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired    |
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2018' Log     | https://yeti2018.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired    | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2018' Log   | https://nessie2018.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired    | 
+
 
 ## Policy Version
 Chromium Certificate Transparency Policy Version 1.0
