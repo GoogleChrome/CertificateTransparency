@@ -4,18 +4,14 @@ _Questions: [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/fo
 This document details the criteria for a certificate to be considered
 *CT Qualified*.
 
-In order to improve the security of Extended Validation (EV) certificates,
-Google Chrome requires that all certificates issued after 1 Jan 2015 be CT
-Qualified in order to be recognized as EV.
+Google Chrome requires that all Extended Validation (EV) certificates
+issued after 1 Jan 2015 be CT Qualified in order to be recognized as EV,
+and that all publicly-trusted TLS certificates issued after 30 April 2018
+be CT Qualified in order to be recognized as valid.
 
-In order to improve the security of the Certificate Authority (CA) ecosystem,
-Google Chrome may require that certificates be considered CT Qualified in
-order to be recognized as trusted. This may be in response to security
-incidents, in which certificates from a particular CA are required to be CT
-Qualified in order to ensure compliance with stated policies and industry
-requirements. This may also be based on site operators signalling that
-certificates for a particular domain be CT Qualified in order to ensure
-transparency of the issued certificates.
+In addition, Google Chrome allows for site operators to indicate that they
+expect all publicly-trusted certificates for their domain, regardless of when
+they were issued, be CT Qualified in order to be trusted.
 
 Chrome’s current Certificate Transparency implementation is as follows:
 
