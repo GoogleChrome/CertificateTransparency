@@ -64,10 +64,10 @@ certificates or inspecting the certificates that have been logged.
 | [Google](https://www.google.com/)         | Google 'Xenon2020' Log                  | https://ct.googleapis.com/logs/xenon2020/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Xenon2021' Log                  | https://ct.googleapis.com/logs/xenon2021/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Xenon2022' Log                  | https://ct.googleapis.com/logs/xenon2022/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2022' Log             | https://ct.cloudflare.com/logs/nimbus2022/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Qualified     | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2023' Log             | https://ct.cloudflare.com/logs/nimbus2023/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Qualified     | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2023' Log               | https://nessie2023.ct.digicert.com/log/    | 24 hours | [Chrome 76](https://crrev.com/666475) | Qualified     | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2023' Log                 | https://yeti2023.ct.digicert.com/log/      | 24 hours | [Chrome 76](https://crrev.com/666475) | Qualified     | 
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2022' Log             | https://ct.cloudflare.com/logs/nimbus2022/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2023' Log             | https://ct.cloudflare.com/logs/nimbus2023/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2023' Log               | https://nessie2023.ct.digicert.com/log/    | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2023' Log                 | https://yeti2023.ct.digicert.com/log/      | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
 | [Google](https://www.google.com/)         | Google 'Xenon2023' Log                  | https://ct.googleapis.com/logs/xenon2023/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Qualified     | 
 | [Google](https://www.google.com/)         | Google 'Argon2022' Log                  | https://ct.googleapis.com/logs/argon2022/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Qualified     | 
 | [Google](https://www.google.com/)         | Google 'Argon2023' Log                  | https://ct.googleapis.com/logs/argon2023/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Qualified     | 
