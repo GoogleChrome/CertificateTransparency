@@ -46,35 +46,29 @@ certificates or inspecting the certificates that have been logged.
 | [DigiCert](https://www.digicert.com/)     | DigiCert Log Server 2                   | https://ct2.digicert-ct.com/log/           | 24 hours | [Chrome 60](https://crrev.com/481160) | Usable        | 
 | [Sectigo](https://sectigo.com/)           | Sectigo 'Mammoth' Log                   | https://mammoth.ct.comodo.com/             | 24 hours | [Chrome 60](https://crrev.com/482145) | Usable        | 
 | [Sectigo](https://sectigo.com/)           | Sectigo 'Sabre' Log                     | https://sabre.ct.comodo.com/               | 24 hours | [Chrome 60](https://crrev.com/482145) | Usable        | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2019' Log             | https://ct.cloudflare.com/logs/nimbus2019/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
 | [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2020' Log             | https://ct.cloudflare.com/logs/nimbus2020/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
 | [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2021' Log             | https://ct.cloudflare.com/logs/nimbus2021/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
-| [Google](https://www.google.com/)         | Google 'Argon2019' Log                  | https://ct.googleapis.com/logs/argon2019/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Argon2020' Log                  | https://ct.googleapis.com/logs/argon2020/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Argon2021' Log                  | https://ct.googleapis.com/logs/argon2021/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2019' Log                 | https://yeti2019.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Usable        | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2020' Log                 | https://yeti2020.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Usable        | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2021' Log                 | https://yeti2021.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Usable        | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2022' Log                 | https://yeti2022.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Usable        | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2019' Log               | https://nessie2019.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Usable        | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2020' Log               | https://nessie2020.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Usable        | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2021' Log               | https://nessie2021.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Usable        | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2022' Log               | https://nessie2022.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Usable        | 
-| [Google](https://www.google.com/)         | Google 'Xenon2019' Log                  | https://ct.googleapis.com/logs/xenon2019/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Xenon2020' Log                  | https://ct.googleapis.com/logs/xenon2020/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Xenon2021' Log                  | https://ct.googleapis.com/logs/xenon2021/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Xenon2022' Log                  | https://ct.googleapis.com/logs/xenon2022/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Usable        | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2022' Log             | https://ct.cloudflare.com/logs/nimbus2022/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2023' Log             | https://ct.cloudflare.com/logs/nimbus2023/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2023' Log               | https://nessie2023.ct.digicert.com/log/    | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2023' Log                 | https://yeti2023.ct.digicert.com/log/      | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable     | 
-| [Google](https://www.google.com/)         | Google 'Xenon2023' Log                  | https://ct.googleapis.com/logs/xenon2023/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Usable     | 
-| [Google](https://www.google.com/)         | Google 'Argon2022' Log                  | https://ct.googleapis.com/logs/argon2022/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Usable     | 
-| [Google](https://www.google.com/)         | Google 'Argon2023' Log                  | https://ct.googleapis.com/logs/argon2023/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Usable     | 
-| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2019' Log             | https://oak.ct.letsencrypt.org/2019/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Qualified     | 
-| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2020' Log             | https://oak.ct.letsencrypt.org/2020/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Qualified     | 
-| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2021' Log             | https://oak.ct.letsencrypt.org/2021/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Qualified     | 
-| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2022' Log             | https://oak.ct.letsencrypt.org/2022/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Qualified     | 
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2022' Log             | https://ct.cloudflare.com/logs/nimbus2022/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable        | 
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2023' Log             | https://ct.cloudflare.com/logs/nimbus2023/ | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable        | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2023' Log               | https://nessie2023.ct.digicert.com/log/    | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable        | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2023' Log                 | https://yeti2023.ct.digicert.com/log/      | 24 hours | [Chrome 76](https://crrev.com/666475) | Usable        | 
+| [Google](https://www.google.com/)         | Google 'Xenon2023' Log                  | https://ct.googleapis.com/logs/xenon2023/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Usable        | 
+| [Google](https://www.google.com/)         | Google 'Argon2022' Log                  | https://ct.googleapis.com/logs/argon2022/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Usable        | 
+| [Google](https://www.google.com/)         | Google 'Argon2023' Log                  | https://ct.googleapis.com/logs/argon2023/  | 24 hours | [Chrome 77](https://crrev.com/689620) | Usable        | 
+| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2020' Log             | https://oak.ct.letsencrypt.org/2020/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Usable        | 
+| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2021' Log             | https://oak.ct.letsencrypt.org/2021/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Usable        | 
+| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2022' Log             | https://oak.ct.letsencrypt.org/2022/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Usable        | 
 
 
 ### Once, but no longer, Qualified Logs
@@ -94,7 +88,12 @@ certificates or inspecting the certificates that have been logged.
 | [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2018' Log | https://ct.cloudflare.com/logs/nimbus2018/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2018' Log     | https://yeti2018.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired    | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2018' Log   | https://nessie2018.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired    | 
-
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2019' Log | https://ct.cloudflare.com/logs/nimbus2019/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2019' Log     | https://yeti2019.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired    | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2019' Log   | https://nessie2019.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired    | 
+| [Google](https://www.google.com/)         | Google 'Argon2019' Log      | https://ct.googleapis.com/logs/argon2019/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
+| [Google](https://www.google.com/)         | Google 'Xenon2019' Log      | https://ct.googleapis.com/logs/xenon2019/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Rejected - Shard Expired    | 
+| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2019' Log | https://oak.ct.letsencrypt.org/2019/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Rejected - Shard Expired    | 
 
 ## Policy Version
 Chromium Certificate Transparency Policy Version 1.0
