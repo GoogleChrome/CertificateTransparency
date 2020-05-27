@@ -42,7 +42,6 @@ certificates or inspecting the certificates that have been logged.
 | [Google](https://www.google.com/)         | Google 'Rocketeer' Log                  | https://ct.googleapis.com/rocketeer        | 24 hours | [Chrome 43](https://crrev.com/325382) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Icarus' Log                     | https://ct.googleapis.com/icarus/          | 24 hours | [Chrome 55](https://crrev.com/429670) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Skydiver' Log                   | https://ct.googleapis.com/skydiver/        | 24 hours | [Chrome 55](https://crrev.com/429670) | Usable        | 
-| [Venafi](https://www.venafi.com/)         | Venafi Gen2 CT log                      | https://ctlog-gen2.api.venafi.com/         | 24 hours | [Chrome 59](https://crrev.com/471318) | Read Only     | 
 | [DigiCert](https://www.digicert.com/)     | DigiCert Log Server 2                   | https://ct2.digicert-ct.com/log/           | 24 hours | [Chrome 60](https://crrev.com/481160) | Usable        | 
 | [Sectigo](https://sectigo.com/)           | Sectigo 'Mammoth' Log                   | https://mammoth.ct.comodo.com/             | 24 hours | [Chrome 60](https://crrev.com/482145) | Usable        | 
 | [Sectigo](https://sectigo.com/)           | Sectigo 'Sabre' Log                     | https://sabre.ct.comodo.com/               | 24 hours | [Chrome 60](https://crrev.com/482145) | Usable        | 
@@ -73,27 +72,29 @@ certificates or inspecting the certificates that have been logged.
 
 ### Once, but no longer, Qualified Logs
 
-| Log Operator                              | Name                        | Log URL                                    | MMD      | Qualified In                          | Last Accepted SCT           | 
-|-------------------------------------------|-----------------------------|--------------------------------------------|----------|---------------------------------------|-----------------------------| 
-| [Certly](https://certly.io/)              | Certly.IO Log               | https://log.certly.io                      | 24 hours | [Chrome 43](https://crrev.com/325382) | 15 April 2016 00:00:00 UTC. | 
-| [Izenpe](https://www.izenpe.com/)         | Izenpe Log                  | https://ct.izenpe.com                      | 24 hours | [Chrome 44](https://crrev.com/326301) | 30 May 2016 00:00:00 UTC.   | 
-| [Venafi](https://www.venafi.com/)         | Venafi CT Log Server        | https://ctlog.api.venafi.com/ct/v1         | 24 hours | [Chrome 47](https://crrev.com/349170) | 28 Feb 2017 18:42:26 UTC.   | 
-| [WoSign](https://www.wosign.com/)         | WoSign Log                  | https://ctlog.wosign.com/                  | 24 hours | [Chrome 54](https://crrev.com/414378) | 12 Feb 2018 23:59:59 UTC.   | 
-| [StartCom](https://www.startssl.com/)     | StartCom CT Log             | https://ct.startssl.com/                   | 24 hours | [Chrome 54](https://crrev.com/414440) | 12 Feb 2018 23:59:59 UTC.   | 
-| [CNNIC](https://cnnic.cn/)                | CNNIC CT Log                | https://ctserver.cnnic.cn/                 | 24 hours | [Chrome 53](https://crrev.com/396817) | 18 Sep 2018 00:00:00 UTC.   | 
-| [DigiCert](https://www.digicert.com/)     | Symantec Log                | https://ct.ws.symantec.com                 | 24 hours | [Chrome 45](https://crrev.com/483625) | 16 Feb 2019 00:00:00 UTC.   | 
-| [DigiCert](https://www.digicert.com/)     | Symantec 'Vega' Log         | https://vega.ws.symantec.com/              | 24 hours | [Chrome 50](https://crrev.com/376143) | 16 Feb 2019 00:00:00 UTC.   | 
-| [DigiCert](https://www.digicert.com/)     | Symantec 'Sirius' Log       | https://sirius.ws.symantec.com/            | 24 hours | [Chrome 60](https://crrev.com/481160) | 16 Feb 2019 00:00:00 UTC.   | 
-| [Google](https://www.google.com/)         | Google 'Argon2018' Log      | https://ct.googleapis.com/logs/argon2018/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2018' Log | https://ct.cloudflare.com/logs/nimbus2018/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2018' Log     | https://yeti2018.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired    | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2018' Log   | https://nessie2018.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired    | 
-| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2019' Log | https://ct.cloudflare.com/logs/nimbus2019/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2019' Log     | https://yeti2019.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired    | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2019' Log   | https://nessie2019.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired    | 
-| [Google](https://www.google.com/)         | Google 'Argon2019' Log      | https://ct.googleapis.com/logs/argon2019/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired    | 
-| [Google](https://www.google.com/)         | Google 'Xenon2019' Log      | https://ct.googleapis.com/logs/xenon2019/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Rejected - Shard Expired    | 
-| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2019' Log | https://oak.ct.letsencrypt.org/2019/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Rejected - Shard Expired    | 
+| Log Operator                              | Name                        | Log URL                                    | MMD      | Qualified In                          | Last Accepted SCT            | 
+|-------------------------------------------|-----------------------------|--------------------------------------------|----------|---------------------------------------|------------------------------| 
+| [Certly](https://certly.io/)              | Certly.IO Log               | https://log.certly.io                      | 24 hours | [Chrome 43](https://crrev.com/325382) | 15 April 2016 00:00:00 UTC.  | 
+| [Izenpe](https://www.izenpe.com/)         | Izenpe Log                  | https://ct.izenpe.com                      | 24 hours | [Chrome 44](https://crrev.com/326301) | 30 May 2016 00:00:00 UTC.    | 
+| [Venafi](https://www.venafi.com/)         | Venafi CT Log Server        | https://ctlog.api.venafi.com/ct/v1         | 24 hours | [Chrome 47](https://crrev.com/349170) | 28 Feb 2017 18:42:26 UTC.    | 
+| [WoSign](https://www.wosign.com/)         | WoSign Log                  | https://ctlog.wosign.com/                  | 24 hours | [Chrome 54](https://crrev.com/414378) | 12 Feb 2018 23:59:59 UTC.    | 
+| [StartCom](https://www.startssl.com/)     | StartCom CT Log             | https://ct.startssl.com/                   | 24 hours | [Chrome 54](https://crrev.com/414440) | 12 Feb 2018 23:59:59 UTC.    | 
+| [CNNIC](https://cnnic.cn/)                | CNNIC CT Log                | https://ctserver.cnnic.cn/                 | 24 hours | [Chrome 53](https://crrev.com/396817) | 18 Sep 2018 00:00:00 UTC.    | 
+| [DigiCert](https://www.digicert.com/)     | Symantec Log                | https://ct.ws.symantec.com                 | 24 hours | [Chrome 45](https://crrev.com/483625) | 16 Feb 2019 00:00:00 UTC.    | 
+| [DigiCert](https://www.digicert.com/)     | Symantec 'Vega' Log         | https://vega.ws.symantec.com/              | 24 hours | [Chrome 50](https://crrev.com/376143) | 16 Feb 2019 00:00:00 UTC.    | 
+| [DigiCert](https://www.digicert.com/)     | Symantec 'Sirius' Log       | https://sirius.ws.symantec.com/            | 24 hours | [Chrome 60](https://crrev.com/481160) | 16 Feb 2019 00:00:00 UTC.    | 
+| [Google](https://www.google.com/)         | Google 'Argon2018' Log      | https://ct.googleapis.com/logs/argon2018/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired     | 
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2018' Log | https://ct.cloudflare.com/logs/nimbus2018/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired     | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2018' Log     | https://yeti2018.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired     | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2018' Log   | https://nessie2018.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired     | 
+| [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2019' Log | https://ct.cloudflare.com/logs/nimbus2019/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired     | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Yeti2019' Log     | https://yeti2019.ct.digicert.com/log/      | 24 hours | [Chrome 67](https://crrev.com/559734) | Rejected - Shard Expired     | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert 'Nessie2019' Log   | https://nessie2019.ct.digicert.com/log/    | 24 hours | [Chrome 72](https://crrev.com/620903) | Rejected - Shard Expired     | 
+| [Google](https://www.google.com/)         | Google 'Argon2019' Log      | https://ct.googleapis.com/logs/argon2019/  | 24 hours | [Chrome 65](https://crrev.com/540254) | Rejected - Shard Expired     | 
+| [Google](https://www.google.com/)         | Google 'Xenon2019' Log      | https://ct.googleapis.com/logs/xenon2019/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Rejected - Shard Expired     | 
+| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2019' Log | https://oak.ct.letsencrypt.org/2019/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Rejected - Shard Expired     | 
+| [Venafi](https://www.venafi.com/)         | Venafi Gen2 CT log          | https://ctlog-gen2.api.venafi.com/         | 24 hours | [Chrome 59](https://crrev.com/471318) | Rejected - All Certs Expired | 
+
 
 ## Policy Version
 Chromium Certificate Transparency Policy Version 1.0
