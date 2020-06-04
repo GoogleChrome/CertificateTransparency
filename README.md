@@ -42,7 +42,6 @@ certificates or inspecting the certificates that have been logged.
 | [Google](https://www.google.com/)         | Google 'Rocketeer' Log                  | https://ct.googleapis.com/rocketeer        | 24 hours | [Chrome 43](https://crrev.com/325382) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Icarus' Log                     | https://ct.googleapis.com/icarus/          | 24 hours | [Chrome 55](https://crrev.com/429670) | Usable        | 
 | [Google](https://www.google.com/)         | Google 'Skydiver' Log                   | https://ct.googleapis.com/skydiver/        | 24 hours | [Chrome 55](https://crrev.com/429670) | Usable        | 
-| [DigiCert](https://www.digicert.com/)     | DigiCert Log Server 2                   | https://ct2.digicert-ct.com/log/           | 24 hours | [Chrome 60](https://crrev.com/481160) | Usable        | 
 | [Sectigo](https://sectigo.com/)           | Sectigo 'Mammoth' Log                   | https://mammoth.ct.comodo.com/             | 24 hours | [Chrome 60](https://crrev.com/482145) | Usable        | 
 | [Sectigo](https://sectigo.com/)           | Sectigo 'Sabre' Log                     | https://sabre.ct.comodo.com/               | 24 hours | [Chrome 60](https://crrev.com/482145) | Usable        | 
 | [Cloudflare](https://www.cloudflare.com/) | Cloudflare 'Nimbus2020' Log             | https://ct.cloudflare.com/logs/nimbus2020/ | 24 hours | [Chrome 65](https://crrev.com/540254) | Usable        | 
@@ -94,6 +93,7 @@ certificates or inspecting the certificates that have been logged.
 | [Google](https://www.google.com/)         | Google 'Xenon2019' Log      | https://ct.googleapis.com/logs/xenon2019/  | 24 hours | [Chrome 73](https://crrev.com/634940) | Rejected - Shard Expired     | 
 | [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2019' Log | https://oak.ct.letsencrypt.org/2019/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Rejected - Shard Expired     | 
 | [Venafi](https://www.venafi.com/)         | Venafi Gen2 CT log          | https://ctlog-gen2.api.venafi.com/         | 24 hours | [Chrome 59](https://crrev.com/471318) | Rejected - All Certs Expired | 
+| [DigiCert](https://www.digicert.com/)     | DigiCert Log Server 2       | https://ct2.digicert-ct.com/log/           | 24 hours | [Chrome 60](https://crrev.com/481160) | 04 May 2020 00:00:40 UTC     | 
 
 
 ## Policy Version
