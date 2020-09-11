@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="{{ "/" | absolute_url }}">Certificate Transparency<br>in Chrome</a></h1>
+
+<h2 class="menu">Policies</h2>
+
+  <p class="menu"><a href="/CertificateTransparency/ct_policy.html">Chrome CT Policy</a></p>
+  <p class="menu"><a href="/CertificateTransparency/log_policy.html">Chrome CT Log Policy</a></p>
+
+<h2 class="menu">Reference Material</h2>
+
+  <p class="menu"><a href="/CertificateTransparency/log_states.html">Lifecycle of a CT Log</a></p>
+  <p class="menu"><a href="/CertificateTransparency/site_operators.html">Information for site operators</a></p>
+  <p class="menu"><a href="/CertificateTransparency/enterprises.html">Information for enterprises</a></p>
+  <p class="menu"><a href="/CertificateTransparency/log_list.html">List of recognized CT Logs</a></p>
+  <!-- <p class="menu"><a href="/glossary.html">Glossary of CT Terms</a></p> -->
+
+      </header>
+      <section>
+
+      {{ content }}
+
+      </section>
+      <footer>
+        <p><a href="/CONTRIBUTING.md">contributing</a> | <a href="/license.txt">license</a></p>
+      </footer>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html>
