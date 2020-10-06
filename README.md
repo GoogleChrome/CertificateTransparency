@@ -67,6 +67,11 @@ certificates or inspecting the certificates that have been logged.
 | [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2020' Log             | https://oak.ct.letsencrypt.org/2020/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Usable        | 
 | [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2021' Log             | https://oak.ct.letsencrypt.org/2021/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Usable        | 
 | [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2022' Log             | https://oak.ct.letsencrypt.org/2022/       | 24 hours | [Chrome 78](https://crrev.com/703880) | Usable        | 
+| [Let's Encrypt](https://letsencrypt.org/) | Let's Encrypt 'Oak2023' Log             | https://oak.ct.letsencrypt.org/2023/       | 24 hours | [Chrome 87](https://crrev.com/800599) | Qualified        | 
+| [TrustAsia](https://trustasia.com) | TrustAsia 'Log2020'              | https://ct.trustasia.com/log2020/       | 24 hours | [Chrome 87](https://crrev.com/800599) | Qualified        | 
+| [TrustAsia](https://trustasia.com) | TrustAsia 'Log2021'              | https://ct.trustasia.com/log2021/       | 24 hours | [Chrome 87](https://crrev.com/800599) | Qualified        | 
+| [TrustAsia](https://trustasia.com) | TrustAsia 'Log2022'              | https://ct.trustasia.com/log2022/       | 24 hours | [Chrome 87](https://crrev.com/800599) | Qualified        | 
+| [TrustAsia](https://trustasia.com) | TrustAsia 'Log2023'              | https://ct.trustasia.com/log2023/       | 24 hours | [Chrome 87](https://crrev.com/800599) | Qualified        | 
 
 
 ### Once, but no longer, Qualified Logs
