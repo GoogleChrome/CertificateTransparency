@@ -19,12 +19,12 @@ Chrome’s current Certificate Transparency implementation is as follows:
      certificates issued by CAs accepted by any major browser.
   1. Google continues to invite other organisations to deploy CT logs in order
      to improve robustness.
-  1. On 1 Jan 2015 Chrome created a whitelist of certificates that contained
+  1. On 1 Jan 2015 Chrome created an allowlist of certificates that contained
      EV policy OIDs included or pending inclusion in Chrome, that were logged
      in a qualifying log, and that would not qualify via SCTs embedded in the
      certificate (see below).
   1. In March 2015 Chrome for desktop platforms ceased to show the EV
-     indicator for certificates not in the whitelist and not CT qualified
+     indicator for certificates not in the allowlist and not CT qualified
      according to the criteria below.
 
 ## Qualifying Logs
@@ -36,20 +36,20 @@ The criteria for qualifying logs can be found [here](log_policy.md).
 A certificate is “CT qualified” if it meets one of the following criteria:
 
   1. An SCT from a log qualified at the time of check is presented via the TLS
-     extension OR is embedded within a stapled OCSP response;
+     extension OR is embedded within a stapled OCSP response;
  
      **AND** there is at least one SCT from a Google Log, qualified at the time
-     of check, presented via any method;
+     of check, presented via any method;
 
      **AND** there is at least one SCT from a non-Google Log, qualified at time
      of check, presented via any method.
-  1. An Embedded SCT from a log qualified at the time of check is presented;
+  1. An Embedded SCT from a log qualified at the time of check is presented;
 
      **AND** there is at least one Embedded SCT from a Google Log, once or
-     currently qualified;
+     currently qualified;
 
      **AND** there is at least one Embedded SCT from a non-Google Log, once or
-     currently qualified;
+     currently qualified;
 
      **AND** there are Embedded SCTs from AT LEAST the number of logs once or
      currently qualified shown in Table 1.
