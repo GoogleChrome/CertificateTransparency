@@ -1,91 +1,72 @@
-# Certificate Transparency in Chrome
-_Questions: [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy)_
+# Chrome Certificate Transparency Policy
+_Please direct any questions about this Policy to the CT Policy forum: [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy)_
 
-This document details the criteria for a certificate to be considered
-*CT Qualified*.
+When a website’s TLS certificate is validated in modern versions of Chrome, it is 
+evaluated for compliance against the Chrome CT Policy, except in rare circumstances where [certain](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForCas) [enterprise](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForLegacyCas) [policies](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForUrls) are set by an administrator. Certificates that are accompanied by SCTs that satisfy this Policy are said to be *CT Compliant*.
 
-Google Chrome requires that all Extended Validation (EV) certificates
-issued after 1 Jan 2015 be CT Qualified in order to be recognized as EV,
-and that all publicly-trusted TLS certificates issued after 30 April 2018
-be CT Qualified in order to be recognized as valid.
+CT Compliance is achieved by a certificate and set of accompanying SCTs meeting a set of technical requirements enforced by the Chrome browser during certificate validation, which are defined in this Policy. The issuance of certificates that are not CT compliant is **not** considered mis-issuance or a violation of Chrome’s root program; such certificates will simply fail to validate in CT-enforcing versions of Chrome.
 
-In addition, Google Chrome allows for site operators to indicate that they
-expect all publicly-trusted certificates for their domain, regardless of when
-they were issued, be CT Qualified in order to be trusted.
+---
 
-Chrome’s current Certificate Transparency implementation is as follows:
+## CT Log States
+CT Compliance in Chrome is determined by evaluating SCTs from CT Logs and ensuring that these Logs are in the correct state(s) at time of check. The set of possible states a CT Log can be in is: 
+* `Pending`,
+* `Qualified`,
+* `Usable`,
+* `ReadOnly`, 
+* `Retired`, and
+* `Rejected` 
 
-  1. Google runs three geographically diverse CT logs which accept all
-     certificates issued by CAs accepted by any major browser.
-  1. Google continues to invite other organisations to deploy CT logs in order
-     to improve robustness.
-  1. On 1 Jan 2015 Chrome created an allowlist of certificates that contained
-     EV policy OIDs included or pending inclusion in Chrome, that were logged
-     in a qualifying log, and that would not qualify via SCTs embedded in the
-     certificate (see below).
-  1. In March 2015 Chrome for desktop platforms ceased to show the EV
-     indicator for certificates not in the allowlist and not CT qualified
-     according to the criteria below.
+In order to assist with understanding the requirements for CT compliance in Chrome, the definition of these states, the requirements of Logs in each state, as well as how these states impact Chrome behavior are described in detail in the [CT Log Lifecycle Explainer](log_states.md). 
 
-## Qualifying Logs
+---
 
-The criteria for qualifying logs can be found [here](log_policy.md).
-
-## Qualifying Certificate
-
-A certificate is “CT qualified” if it meets one of the following criteria:
-
-  1. An SCT from a log qualified at the time of check is presented via the TLS
-     extension OR is embedded within a stapled OCSP response;
+## CT Compliant Certificates
+A TLS certificate is *CT Compliant* if it is accompanied by a set of SCTs that satisfies at least one of the criteria defined below, depending on how the SCTs are delivered to Chrome. In CT-enforcing versions of Chrome, TLS certificates are required to be CT Compliant to successfully validate; however, certificates that are not logged to CT or have insufficient SCTs are not considered to be mis-issued or in violation of Chrome’s root program.
  
-     **AND** there is at least one SCT from a Google Log, qualified at the time
-     of check, presented via any method;
+When evaluating a certificate for CT Compliance, Chrome considers several factors including how many SCTs are present, who operates the CT Log that issued the SCT, and what state the CT Log that issued the SCT was in, both at the time the certificate is being validated, and at the time the SCT was created by the CT Log. 
 
-     **AND** there is at least one SCT from a non-Google Log, qualified at time
-     of check, presented via any method.
-  1. An Embedded SCT from a log qualified at the time of check is presented;
+**CT Compliance is required in the following circumstances:**
+* EV TLS certificates issued on-or-after 1 January 2015 are required to be CT Compliant in order to be recognized as EV in Chrome
+* All TLS certificates issued on-or-after 1 May 2018 are required to be CT Compliant in order to successfully validate in Chrome
+* TLS certificates, regardless of issuance date, for sites whose operators have opted into Expect-CT enforcement are required to be CT compliant to successfully validate in Chrome after first navigating to the site and caching the Expect-CT enforcement setting.
 
-     **AND** there is at least one Embedded SCT from a Google Log, once or
-     currently qualified;
+Depending on how the SCTs are presented to Chrome, CT compliance can be achieved by meeting one of the following two criteria:
 
-     **AND** there is at least one Embedded SCT from a non-Google Log, once or
-     currently qualified;
+**Embedded SCTs:**
+1. At least one Embedded SCT from a CT Log that was `Qualified`, `Usable` or `ReadOnly` at the time of check; and
+2. At least one Embedded SCT from a Google CT Log that was `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check; and
+3. At least one Embedded SCT from a non-Google CT Log that was `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check; and
+4. There are SCTs from at least N distinct CT Logs that were `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check, where N is defined in the following table:
 
-     **AND** there are Embedded SCTs from AT LEAST the number of logs once or
-     currently qualified shown in Table 1.
-
-"Once or currently qualified" means that the log was qualified or pending
-qualification at the time of certificate issuance, that the log was accepted
-prior to the time of check, but that the log may have been disqualified
-following acceptance, prior to the time of check.
-
-"Embedded SCT" means an SCT delivered via an X.509v3 extension within the
-certificate.
-
-**Table 1**
-
-| Lifetime of Certificate | Number of SCTs from distinct logs |
+| Certificate Lifetime | Number of SCTs from distinct CT Logs |
 |:---:|:---:|
 | < 15 months | 2 |
-| >= 15, <= 27 months | 3 |
-| > 27, <= 39 months | 4<sup>[1](#footnote1)</sup> |
+| >= 15 and <= 27 months | 3 |
+| > 27 and <= 39 months | 4 |
 | > 39 months | 5 |
 
-<a name="footnote1"><sup>1</sup></a> EV certificates should never have a
-lifetime over 27 months.
+**SCTs delivered via OCSP or TLS:**
+1. At least one SCT from a Google CT Log that was `Qualified`, `Usable`, or `ReadOnly` at the time of check; and
+2. At least one SCT from a non-Google CT Log that was `Qualified`, `Usable`, or `ReadOnly` at time of check.
 
-Note that, so long as one of the above conditions is met by some combination
-of SCTs presented in the handshake, additional SCTs, regardless of the status
-of the SCT, will not affect the CT Qualification status positively or
-negatively.
 
-**Important note: many TLS servers do not support OCSP Stapling or the TLS
-extension, so CAs should be prepared to insert SCTs into issued EV
-certificates to maintain the EV indication.**
+### Important Notes
+So long as one of the above CT Compliance criteria is met by some combination of SCTs presented in the handshake, additional SCTs, regardless of the status of the SCT, will not affect a certificate’s CT Compliance status positively or negatively.
 
-## Timeouts
+In order to contribute to a certificate’s CT Compliance, an SCT must have been issued before the Log’s `Retired` timestamp, if one exists. Chrome uses the earliest SCT among all SCTs presented to evaluate CT compliance against CT Log `Retired` timestamps. This accounts for edge cases in which a CT Log becomes `Retired` during the process of submitting certificate logging requests.
 
-The list of qualifying and once qualifying logs will be periodically refreshed
-during regular Chrome releases. If the installed version of Chrome has not
-applied security updates for a significant amount of time then CT checking
-will be disabled.
+"Embedded SCT" means an SCT delivered via the SignedCertificateTimestampList 
+X.509v3 extension within the certificate itself. Many TLS servers do not support OCSP Stapling or the TLS extension, so CAs should be prepared to embed SCTs into issued certificates to ensure successful validation and/or EV treatment in Chrome.
+
+---
+
+## How CT Logs are added to Chrome
+The criteria for how CT Logs can become `Qualified`, as well as what circumstances can cause them to become `Retired`, can be found in the [Chrome CT Log Policy](log_policy.md).
+
+---
+
+## CT Enforcement Timeout
+The list of CT Logs included in Chrome will be periodically refreshed during regular Chrome releases. If the installed version of Chrome has not applied security updates for 70 days (10 weeks) or more, then CT enforcement will be disabled. 
+
+This timeout provides a critical assurance to the CT ecosystem that new CT Logs are able to transition to `Usable` within a fixed amount of time after becoming `Qualified`. All CT-enforcing user agents are strongly encouraged to implement a similar enforcement timeout to maximize compatibility with the existing ecosystem.
