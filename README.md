@@ -18,5 +18,3 @@ that the CA is complying with their expected or disclosed practices.
 For more information about how Certificate Transparency works and its role in supporting the web PKI, you can find a helpful introduction to CT at [https://certificate.transparency.dev](https://certificate.transparency.dev/).
 
 Chrome requires all publicly-trusted TLS certificates issued after April 30, 2018 to support CT in order to be recognized as valid. This site provides details on what is required. Any questions should be directed to the [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) list.
-
-## &nbsp;
