@@ -31,8 +31,26 @@ When evaluating a certificate for CT Compliance, Chrome considers several factor
 * All TLS certificates issued on-or-after 1 May 2018 are required to be CT Compliant in order to successfully validate in Chrome
 * TLS certificates, regardless of issuance date, for sites whose operators have opted into Expect-CT enforcement are required to be CT compliant to successfully validate in Chrome after first navigating to the site and caching the Expect-CT enforcement setting.
 
-Depending on how the SCTs are presented to Chrome, CT compliance can be achieved by meeting one of the following two criteria:
+Depending on how the SCTs are presented to Chrome, CT compliance can be achieved by meeting one of the following criteria:
 
+### For certificates issued on-or-after 15 April 2022:
+**Embedded SCTs:**
+1. At least one Embedded SCT from a CT Log that was `Qualified,` `Usable,` or `ReadOnly` at the time of check; and
+2. There are Embedded SCTs from at least N distinct CT Logs that were `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check, where N is defined in the following table; and
+3. Among the SCTs satisfying requirements 1 and 2, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome.
+
+| Certificate Lifetime | Number of SCTs from distinct CT Logs |
+|:---:|:---:|
+| < 180 days | 2 |
+| >= 180 days | 3 |
+
+**SCTs delivered via OCSP or TLS:**
+1. At least two SCTs from a CT Log that was `Qualified`, `Usable`, or `ReadOnly` at the time of check; and
+2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome.
+
+For both embedd SCTs and those delivered via OCSP or TLS, Log Operator uniqueness is defined as having separate entries within the `operators` section of [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json).
+
+### For certificates issued before 15 April 2022:
 **Embedded SCTs:**
 1. At least one Embedded SCT from a CT Log that was `Qualified`, `Usable` or `ReadOnly` at the time of check; and
 2. At least one Embedded SCT from a Google CT Log that was `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check; and
@@ -50,7 +68,6 @@ Depending on how the SCTs are presented to Chrome, CT compliance can be achieved
 1. At least one SCT from a Google CT Log that was `Qualified`, `Usable`, or `ReadOnly` at the time of check; and
 2. At least one SCT from a non-Google CT Log that was `Qualified`, `Usable`, or `ReadOnly` at time of check.
 
-
 ### Important Notes
 So long as one of the above CT Compliance criteria is met by some combination of SCTs presented in the handshake, additional SCTs, regardless of the status of the SCT, will not affect a certificate’s CT Compliance status positively or negatively.
 
@@ -67,6 +84,8 @@ The criteria for how CT Logs can become `Qualified`, as well as what circumstanc
 ---
 
 ## CT Enforcement Timeout
-The list of CT Logs included in Chrome will be periodically refreshed during regular Chrome releases. If the installed version of Chrome has not applied security updates for 70 days (10 weeks) or more, then CT enforcement will be disabled. 
+Every day, Google publishes a new [CT Log list](https://www.gstatic.com/ct/log_list/v3/log_list.json) that contains a fresh `log_list_timestamp`. These updated log lists are merged back to both Chromium top-of-tree as well as to Chrome release branches. When a new version of Chrome is released, it will enforce CT for 70 days (10 weeks) after its freshest `log_list_timestamp`. 
 
-This timeout provides a critical assurance to the CT ecosystem that new CT Logs are able to transition to `Usable` within a fixed amount of time after becoming `Qualified`. All CT-enforcing user agents are strongly encouraged to implement a similar enforcement timeout to maximize compatibility with the existing ecosystem.
+Since Chrome 94, Chrome clients will also attempt to obtain updated CT Log lists from the [Component Updater](https://chromium.googlesource.com/chromium/src/+/lkgr/components/component_updater/README.md) infrastructure several times per day. On a successful update of the CT Log list, Chrome will update the start of its 70 day CT enforcement window to the freshest `log_list_timestamp`.
+
+If the installed version of Chrome has not applied security updates and has been unable to obtain an updated CT log list from the Component Updater for 70 days or more, then CT enforcement will be disabled. This timeout provides a critical assurance to the CT ecosystem that new CT Logs are able to safely transition to `Usable` within a fixed amount of time after becoming `Qualified`. All CT-enforcing user agents are strongly encouraged to implement a similar enforcement timeout to maximize compatibility with the existing ecosystem.
