@@ -41,8 +41,8 @@ Depending on how the SCTs are presented to Chrome, CT compliance can be achieved
 
 | Certificate Lifetime | Number of SCTs from distinct CT Logs |
 |:---:|:---:|
-| < 180 days | 2 |
-| >= 180 days | 3 |
+| <= 180 days | 2 |
+| > 180 days | 3 |
 
 **SCTs delivered via OCSP or TLS:**
 1. At least two SCTs from a CT Log that was `Qualified`, `Usable`, or `ReadOnly` at the time of check; and
