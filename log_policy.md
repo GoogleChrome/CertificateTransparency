@@ -63,6 +63,7 @@ CT Logs are permitted to reject logging submissions for certificates that meet c
 If specified within the Application, a Log may reject submission to log certificates that chain up to an Accepted Root Certificate based on one or more of the following conditions: 
 * **Certificate Revoked:** If the Log determines that a certificate has been revoked by the issuing CA, it may reject the logging submission. If the Log is unable to determine revocation status, it must accept the logging submission and incorporate the entry into the Merkle Tree within the Log's MMD.
 * **Certificate Expired:** If a logging submission includes a certificate whose notAfter timestamp represents a point in time before the logging submission was made, the Log may refuse to log the certificate entry. This criteria may be used even by legacy non-sharded CT Logs that do not set certificate expiry ranges.
+* **TLS Server Auth EKU:** The Log may reject logging submissions for certificates that do not contain the `id-kp-serverAuth` Extended Key Usage (EKU).
   
 The primary purpose of allowing rejection of certain logging submissions is to provide Log Operators with greater control over the growth and operation of their Logs while still performing their core function. Additionally, these criteria allow Logs to be shielded from certain types of Denial of Service such as being spammed with the corpus of all expired certificates and being unable to respond to legitimate logging submissions.
 
