@@ -21,7 +21,7 @@ certificates or inspecting the certificates that have been logged.
 |Google 'Skydiver' log          | https://ct.googleapis.com/skydiver/          | Retired  | 86400 |                       |                       |  Google        |  google-ct-logs@googlegroups.com  |
 |Cloudflare 'Nimbus2022' Log    | https://ct.cloudflare.com/logs/nimbus2022/   | Usable   | 86400 |  2022-01-01T00:00:00Z |  2023-01-01T00:00:00Z |  Cloudflare    |  ct-logs@cloudflare.com           |
 |Cloudflare 'Nimbus2023' Log    | https://ct.cloudflare.com/logs/nimbus2023/   | Usable   | 86400 |  2023-01-01T00:00:00Z |  2024-01-01T00:00:00Z |  Cloudflare    |  ct-logs@cloudflare.com           |
-|Cloudflare 'Nimbus2024' Log    | https://ct.cloudflare.com/logs/nimbus2024/   | Qualified| 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  Cloudflare    |  ct-logs@cloudflare.com           |
+|Cloudflare 'Nimbus2024' Log    | https://ct.cloudflare.com/logs/nimbus2024/   | Usable   | 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  Cloudflare    |  ct-logs@cloudflare.com           |
 |DigiCert Log Server            | https://ct1.digicert-ct.com/log/             | Retired  | 86400 |                       |                       |  DigiCert      |  ctops@digicert.com               |
 |DigiCert Log Server 2          | https://ct2.digicert-ct.com/log/             | Retired  | 86400 |                       |                       |  DigiCert      |  ctops@digicert.com               |
 |DigiCert Yeti2022 Log          | https://yeti2022.ct.digicert.com/log/        | Retired  | 86400 |  2022-01-01T00:00:00Z |  2023-01-01T00:00:00Z |  DigiCert      |  ctops@digicert.com               |
@@ -37,8 +37,8 @@ certificates or inspecting the certificates that have been logged.
 |Sectigo 'Mammoth' CT log       | https://mammoth.ct.comodo.com/               | Usable   | 86400 |                       |                       |  Sectigo       |  ctops@sectigo.com                |
 |Let's Encrypt 'Oak2022' log    | https://oak.ct.letsencrypt.org/2022/         | Usable   | 86400 |  2022-01-01T00:00:00Z |  2023-01-07T00:00:00Z |  Let's Encrypt |  sre@letsencrypt.org              |
 |Let's Encrypt 'Oak2023' log    | https://oak.ct.letsencrypt.org/2023/         | Usable   | 86400 |  2023-01-01T00:00:00Z |  2024-01-07T00:00:00Z |  Let's Encrypt |  sre@letsencrypt.org              |
-|Let's Encrypt 'Oak2024H1' log  | https://oak.ct.letsencrypt.org/2024h1/       | Qualified| 86400 |  2023-12-20T00:00:00Z |  2024-07-20T00:00:00Z |  Let's Encrypt |  sre@letsencrypt.org              |
-|Let's Encrypt 'Oak2024H2' log  | https://oak.ct.letsencrypt.org/2024h2/       | Qualified| 86400 |  2024-06-20T00:00:00Z |  2025-01-20T00:00:00Z |  Let's Encrypt |  sre@letsencrypt.org              |
+|Let's Encrypt 'Oak2024H1' log  | https://oak.ct.letsencrypt.org/2024h1/       | Usable   | 86400 |  2023-12-20T00:00:00Z |  2024-07-20T00:00:00Z |  Let's Encrypt |  sre@letsencrypt.org              |
+|Let's Encrypt 'Oak2024H2' log  | https://oak.ct.letsencrypt.org/2024h2/       | Usable   | 86400 |  2024-06-20T00:00:00Z |  2025-01-20T00:00:00Z |  Let's Encrypt |  sre@letsencrypt.org              |
 |Trust Asia Log2022             | https://ct.trustasia.com/log2022/            | Usable   | 86400 |  2022-01-01T00:00:00Z |  2023-01-01T00:00:00Z |  TrustAsia     |  trustasia-ct-logs@trustasia.com  |
 |Trust Asia Log2023             | https://ct.trustasia.com/log2023/            | Usable   | 86400 |  2023-01-01T00:00:00Z |  2024-01-01T00:00:00Z |  TrustAsia     |  trustasia-ct-logs@trustasia.com  |
 |Trust Asia Log2024-2           | https://ct2024.trustasia.com/log2024/        | Qualified| 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  TrustAsia     |  trustasia-ct-logs@trustasia.com  |
