@@ -6,7 +6,7 @@ The purpose of this document is to describe the lifecycle of a CT Log, represent
 ---
 
 ## CT Log State Machine
-When the JSON schema for CT Log Lists was updated to [v2](https://www.gstatic.com/ct/log_list/v2/log_list_schema.json) in 2019, several CT Log states were formalized that did not exist when the CT enforcement logic in Chrome was implemented. Some of these states are related to CT enforcement, others represent a stage of the CT Log application process, while others still are external signals to CAs and CT Monitors. 
+When the JSON schema for CT Log Lists was updated to v2 in 2019, several CT Log states were formalized that did not exist when the CT enforcement logic in Chrome was implemented. Some of these states are related to CT enforcement, others represent a stage of the CT Log application process, while others still are external signals to CAs and CT Monitors. 
 
 ```
                  +------------------------+
@@ -83,7 +83,7 @@ The `Usable` state is not a state that is specifically recognized by Chrome clie
 ## `ReadOnly`
 If a Log Operator wishes to cease accepting certificate logging requests, they may request that their `Qualified` or `Usable` CT Log(s) be placed in the `ReadOnly` state. CT Logs that become `ReadOnly` mode are making an assertion that they will stop issuing new SCTs, but will continue to operate the CT Log in accordance with the [Certificate Transparency Log Policy](log_policy.md).
 
-When a Log becomes `ReadOnly`, the final tree size is published to the Google-hosted [CT Log List](https://www.gstatic.com/ct/log_list/v2/log_list.json) to signal that this Log should not grow past this point. To help ensure this behavior, CT Monitors should continue monitoring `ReadOnly` Logs until they become `Retired` or `Rejected`. 
+When a Log becomes `ReadOnly`, the final tree size is published to the Google-hosted [CT Log List](https://www.gstatic.com/ct/log_list/v3/log_list.json) to signal that this Log should not grow past this point. To help ensure this behavior, CT Monitors should continue monitoring `ReadOnly` Logs until they become `Retired` or `Rejected`. 
 
 **How `ReadOnly` CT Logs transition to other states:**
 * `ReadOnly` CT Logs transition to `Retired` if they demonstrate a serious or sustained pattern of CT Policy or RFC compliance issues, or if the Log Operator ceases operation of their CT Log(s). Due to the inability for Chrome to distinguish between intentional and accidental non-compliance, such issues are treated as highest possible severity, which results in the CT Log being `Retired`.
