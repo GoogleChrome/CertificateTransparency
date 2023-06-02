@@ -13,13 +13,8 @@ certificates or inspecting the certificates that have been logged.
 |Google 'Argon2024' log         | https://ct.googleapis.com/logs/us1/argon2024/| Usable   | 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  Google        |  google-ct-logs@googlegroups.com  |
 |Google 'Xenon2023' log         | https://ct.googleapis.com/logs/xenon2023/    | Usable   | 86400 |  2023-01-01T00:00:00Z |  2024-01-01T00:00:00Z |  Google        |  google-ct-logs@googlegroups.com  |
 |Google 'Xenon2024' log         | https://ct.googleapis.com/logs/eu1/xenon2024/| Usable   | 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  Google        |  google-ct-logs@googlegroups.com  |
-|Google 'Icarus' log            | https://ct.googleapis.com/icarus/            | Retired  | 86400 |                       |                       |  Google        |  google-ct-logs@googlegroups.com  |
-|Google 'Pilot' log             | https://ct.googleapis.com/pilot/             | Retired  | 86400 |                       |                       |  Google        |  google-ct-logs@googlegroups.com  |
-|Google 'Rocketeer' log         | https://ct.googleapis.com/rocketeer/         | Retired  | 86400 |                       |                       |  Google        |  google-ct-logs@googlegroups.com  |
-|Google 'Skydiver' log          | https://ct.googleapis.com/skydiver/          | Retired  | 86400 |                       |                       |  Google        |  google-ct-logs@googlegroups.com  |
 |Cloudflare 'Nimbus2023' Log    | https://ct.cloudflare.com/logs/nimbus2023/   | Usable   | 86400 |  2023-01-01T00:00:00Z |  2024-01-01T00:00:00Z |  Cloudflare    |  ct-logs@cloudflare.com           |
 |Cloudflare 'Nimbus2024' Log    | https://ct.cloudflare.com/logs/nimbus2024/   | Usable   | 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  Cloudflare    |  ct-logs@cloudflare.com           |
-|DigiCert Log Server            | https://ct1.digicert-ct.com/log/             | Retired  | 86400 |                       |                       |  DigiCert      |  ctops@digicert.com               |
 |DigiCert Yeti2023 Log          | https://yeti2023.ct.digicert.com/log/        | Retired  | 86400 |  2023-01-01T00:00:00Z |  2024-01-01T00:00:00Z |  DigiCert      |  ctops@digicert.com               |
 |DigiCert Yeti2024 Log          | https://yeti2024.ct.digicert.com/log/        | Usable   | 86400 |  2024-01-01T00:00:00Z |  2025-01-01T00:00:00Z |  DigiCert      |  ctops@digicert.com               |
 |DigiCert Yeti2025 Log          | https://yeti2025.ct.digicert.com/log/        | Usable   | 86400 |  2025-01-01T00:00:00Z |  2026-01-01T00:00:00Z |  DigiCert      |  ctops@digicert.com               |
