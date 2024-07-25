@@ -22,18 +22,12 @@ In order to assist with understanding the requirements for CT compliance in Chro
 ---
 
 ## CT Compliant Certificates
-A TLS certificate is *CT Compliant* if it is accompanied by a set of SCTs that satisfies at least one of the criteria defined below, depending on how the SCTs are delivered to Chrome. In CT-enforcing versions of Chrome, TLS certificates are required to be CT Compliant to successfully validate; however, certificates that are not logged to CT or have insufficient SCTs are not considered to be mis-issued or in violation of Chrome’s root program.
+A TLS certificate is *CT Compliant* if it is accompanied by a set of SCTs that satisfies at least one of the criteria defined below, depending on how the SCTs are delivered to Chrome. In CT-enforcing versions of Chrome, all publicly-trusted TLS certificates are required to be CT Compliant to successfully validate; however, certificates that are not logged to CT or have insufficient SCTs are not considered to be mis-issued or in violation of Chrome’s root program.
  
 When evaluating a certificate for CT Compliance, Chrome considers several factors including how many SCTs are present, who operates the CT Log that issued the SCT, and what state the CT Log that issued the SCT was in, both at the time the certificate is being validated, and at the time the SCT was created by the CT Log. 
 
-**CT Compliance is required in the following circumstances:**
-* EV TLS certificates issued on-or-after 1 January 2015 are required to be CT Compliant in order to be recognized as EV in Chrome
-* All TLS certificates issued on-or-after 1 May 2018 are required to be CT Compliant in order to successfully validate in Chrome
-* TLS certificates, regardless of issuance date, for sites whose operators have opted into Expect-CT enforcement are required to be CT compliant to successfully validate in Chrome after first navigating to the site and caching the Expect-CT enforcement setting.
-
 Depending on how the SCTs are presented to Chrome, CT compliance can be achieved by meeting one of the following criteria:
 
-#### For certificates issued on-or-after 15 April 2022:
 **Embedded SCTs:**
 1. At least one Embedded SCT from a CT Log that was `Qualified,` `Usable,` or `ReadOnly` at the time of check; and
 2. There are Embedded SCTs from at least N distinct CT Logs that were `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check, where N is defined in the following table; and
@@ -49,24 +43,6 @@ Depending on how the SCTs are presented to Chrome, CT compliance can be achieved
 2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome.
 
 For both embedded SCTs and those delivered via OCSP or TLS, Log Operator uniqueness is defined as having separate entries within the `operators` section of [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json). In the rare situation that a CT Log changes operators during its lifetime, CT logs in the [v3 log list schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json) optionally contain an list of `previous_operators`, accompanied by the final timestamp that this log was operated by the previous operator. To prevent log operator changes from breaking existing certificates, each SCT’s log operator is determined to be the operator at the time of SCT issuance, by comparing the SCT timestamp against the `previous_operators` timestamps, if present.
-
-#### For certificates issued before 15 April 2022:
-**Embedded SCTs:**
-1. At least one Embedded SCT from a CT Log that was `Qualified`, `Usable` or `ReadOnly` at the time of check; and
-2. At least one Embedded SCT from a Google CT Log that was `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check; and
-3. At least one Embedded SCT from a non-Google CT Log that was `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check; and
-4. There are SCTs from at least N distinct CT Logs that were `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check, where N is defined in the following table:
-
-| Certificate Lifetime | Number of SCTs from distinct CT Logs |
-|:---:|:---:|
-| < 15 months | 2 |
-| >= 15 and <= 27 months | 3 |
-| > 27 and <= 39 months | 4 |
-| > 39 months | 5 |
-
-**SCTs delivered via OCSP or TLS:**
-1. At least one SCT from a Google CT Log that was `Qualified`, `Usable`, or `ReadOnly` at the time of check; and
-2. At least one SCT from a non-Google CT Log that was `Qualified`, `Usable`, or `ReadOnly` at time of check.
 
 ### Important Notes
 So long as one of the above CT Compliance criteria is met by some combination of SCTs presented in the handshake, additional SCTs, regardless of the status of the SCT, will not affect a certificate’s CT Compliance status positively or negatively.
