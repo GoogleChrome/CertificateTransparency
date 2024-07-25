@@ -109,17 +109,13 @@ certificates, enabling security risks and attacks, have two options:
 As noted in [Chrome Policies](#Chrome-Policies), all certificates issued after
 30 April 2018 are expected to be disclosed via Certificate Transparency in a
 way that is compliant with the Certificate Transparency in Chrome policy.
-Virtually all publicly-trusted CAs have committed to supporting CT for their
-customers by default by this date, meaning that site operators should not have
-to do anything special and can continue getting certificates that just work on
-1 May 2018.
+Virtually all publicly-trusted CAs now support CT for their customers by
+default, meaning that site operators should not have to do anything special and
+can continue getting certificates that just work.  1 May 2018.
 
-However, there's still a chance that a CA may not have adopted Certificate
-Transparency, may have an infrastructure issue, or may not have communicated
-to their partners, such as resellers or subordinate CAs, to ensure that the
-transition would be as smooth as possible for their customers.
-
-If you're receiving a `net::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED` error
-message, the best thing to do is to contact your CA's support or sales team
-to diagnose the error with them. They will most likely need to replace your
-certificate with a new one that properly supports CT.
+However, there's still a chance that a CA may have an infrastructure issue, or
+other problem that could cause validation issues. If you're receiving a
+`net::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED` error message, the best thing to do
+is to contact your CA's support or sales team to diagnose the error with them.
+They will most likely need to replace your certificate with a new one that
+properly supports CT.
