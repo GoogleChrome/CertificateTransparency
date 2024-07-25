@@ -9,7 +9,7 @@ To support such auditing, Chrome includes a list of Logs that have passed an app
 Before applying for their first CT Logs to be added to Chrome, new CT Log Operators should first read and fully comprehend the ongoing requirements for CT Logs specified in this Policy. Once a Log Operator is confident they can meet these requirements and has deployed a set of temporally-sharded CT Logs ready for application, they should follow the below process for adding these Logs to Chrome.
 
 ### New CT Log Operators
-New CT Log Operators should begin their application process by first [filing a new CT Log Operator bug](https://bugs.chromium.org/p/chromium/issues/entry) on the Chromium Issue Tracker, and provide:
+New CT Log Operators should begin their application process by first [filing a new CT Log Operator bug](https://issues.chromium.org/u/1/issues/new?component=1456813&template=0) on the Chromium Issue Tracker, and provide:
 * Contact Information for the Log Operator, including:
 	* An email or e-mail alias that is continuously monitored by the Log Operator
 	* A list of person(s) authorized to represent the Log Operator when communicating with the Chrome team
