@@ -43,6 +43,10 @@ certificates or inspecting the certificates that have been logged.
 |Sectigo 'Mammoth2024h2'      |https://mammoth2024h2.ct.sectigo.com/          |Usable   |86400|2024-07-01T00:00:00Z   |2025-01-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
 |Sectigo 'Mammoth2025h1'      |https://mammoth2025h1.ct.sectigo.com/          |Usable   |86400|2025-01-01T00:00:00Z   |2025-07-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
 |Sectigo 'Mammoth2025h2'      |https://mammoth2025h2.ct.sectigo.com/          |Usable   |86400|2025-07-01T00:00:00Z   |2026-01-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
+|Sectigo 'Mammoth2026h1'      |https://mammoth2026h1.ct.sectigo.com/          |Qualified|86400|2026-01-01T00:00:00Z   |2026-07-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
+|Sectigo 'Mammoth2026h2'      |https://mammoth2026h2.ct.sectigo.com/          |Qualified|86400|2026-07-01T00:00:00Z   |2027-01-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
+|Sectigo 'Sabre2026h1'        |https://sabre2026h1.ct.sectigo.com/            |Qualified|86400|2026-01-01T00:00:00Z   |2026-07-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
+|Sectigo 'Sabre2026h2'        |https://sabre2026h2.ct.sectigo.com/            |Qualified|86400|2026-07-01T00:00:00Z   |2027-01-01T00:00:00Z |Sectigo      |ctops@sectigo.com              |
 |Let's Encrypt 'Oak2024H1' log|https://oak.ct.letsencrypt.org/2024h1/         |Usable   |86400|2023-12-20T00:00:00Z   |2024-07-20T00:00:00Z |Let's Encrypt|sre@letsencrypt.org            |
 |Let's Encrypt 'Oak2024H2' log|https://oak.ct.letsencrypt.org/2024h2/         |Usable   |86400|2024-06-20T00:00:00Z   |2025-01-20T00:00:00Z |Let's Encrypt|sre@letsencrypt.org            |
 |Let's Encrypt 'Oak2025h1'    |https://oak.ct.letsencrypt.org/2025h1/         |Usable   |86400|2024-12-20T00:00:00Z   |2025-07-20T00:00:00Z |Let's Encrypt|sre@letsencrypt.org            |
