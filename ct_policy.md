@@ -1,6 +1,6 @@
 # Chrome Certificate Transparency Policy
 _Please direct any questions about this Policy to the CT Policy forum: [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy)_
-
+ 
 When a website’s TLS certificate is validated in modern versions of Chrome, it is 
 evaluated for compliance against the Chrome CT Policy, except in rare circumstances where [certain](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForCas) [enterprise](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForLegacyCas) [policies](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForUrls) are set by an administrator. Certificates that are accompanied by SCTs that satisfy this Policy are said to be *CT Compliant*.
 
