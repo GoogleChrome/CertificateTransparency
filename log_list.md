@@ -12,13 +12,13 @@ certificates or inspecting the certificates that have been logged.
 |Google 'Argon2024' log       |https://ct.googleapis.com/logs/us1/argon2024/  |Usable   |86400|2024-01-01T00:00:00Z   |2025-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
 |Google 'Argon2025h1' log     |https://ct.googleapis.com/logs/us1/argon2025h1/|Usable   |86400|2025-01-01T00:00:00Z   |2025-07-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
 |Google 'Argon2025h2' log     |https://ct.googleapis.com/logs/us1/argon2025h2/|Usable   |86400|2025-07-01T00:00:00Z   |2026-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
-|Google 'Argon2026h1' log     |https://ct.googleapis.com/logs/us1/argon2026h1/|Qualified|86400|2026-01-01T00:00:00Z   |2026-07-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
-|Google 'Argon2026h2' log     |https://ct.googleapis.com/logs/us1/argon2026h2/|Qualified|86400|2026-07-01T00:00:00Z   |2027-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
+|Google 'Argon2026h1' log     |https://ct.googleapis.com/logs/us1/argon2026h1/|Usable   |86400|2026-01-01T00:00:00Z   |2026-07-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
+|Google 'Argon2026h2' log     |https://ct.googleapis.com/logs/us1/argon2026h2/|Usable   |86400|2026-07-01T00:00:00Z   |2027-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
 |Google 'Xenon2024' log       |https://ct.googleapis.com/logs/eu1/xenon2024/  |Usable   |86400|2024-01-01T00:00:00Z   |2025-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
 |Google 'Xenon2025h1' log     |https://ct.googleapis.com/logs/eu1/xenon2025h1/|Usable   |86400|2025-01-01T00:00:00Z   |2025-07-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
 |Google 'Xenon2025h2' log     |https://ct.googleapis.com/logs/eu1/xenon2025h2/|Usable   |86400|2025-07-01T00:00:00Z   |2026-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
-|Google 'Xenon2026h1' log     |https://ct.googleapis.com/logs/eu1/xenon2026h1/|Qualified|86400|2026-01-01T00:00:00Z   |2026-07-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
-|Google 'Xenon2026h2' log     |https://ct.googleapis.com/logs/eu1/xenon2026h2/|Qualified|86400|2026-07-01T00:00:00Z   |2027-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
+|Google 'Xenon2026h1' log     |https://ct.googleapis.com/logs/eu1/xenon2026h1/|Usable   |86400|2026-01-01T00:00:00Z   |2026-07-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
+|Google 'Xenon2026h2' log     |https://ct.googleapis.com/logs/eu1/xenon2026h2/|Usable   |86400|2026-07-01T00:00:00Z   |2027-01-01T00:00:00Z |Google       |google-ct-logs@googlegroups.com|
 |Cloudflare 'Nimbus2024' Log  |https://ct.cloudflare.com/logs/nimbus2024/     |Usable   |86400|2024-01-01T00:00:00Z   |2025-01-01T00:00:00Z |Cloudflare   |ct-logs@cloudflare.com         |
 |Cloudflare 'Nimbus2025'      |https://ct.cloudflare.com/logs/nimbus2025/     |Usable   |86400|2025-01-01T00:00:00Z   |2026-01-01T00:00:00Z |Cloudflare   |ct-logs@cloudflare.com         |
 |Cloudflare 'Nimbus2026'      |https://ct.cloudflare.com/logs/nimbus2026/     |Qualified|86400|2026-01-01T00:00:00Z   |2027-01-01T00:00:00Z |Cloudflare   |ct-logs@cloudflare.com         |
@@ -55,5 +55,5 @@ certificates or inspecting the certificates that have been logged.
 |Trust Asia Log2024-2         |https://ct2024.trustasia.com/log2024/          |Usable   |86400|2024-01-01T00:00:00Z   |2025-01-01T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
 |TrustAsia Log2025a           |https://ct2025-a.trustasia.com/log2025a/       |Usable   |86400|2025-01-01T00:00:00Z   |2026-01-01T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
 |TrustAsia Log2025b           |https://ct2025-b.trustasia.com/log2025b/       |Usable   |86400|2025-01-01T00:00:00Z   |2026-01-01T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
-|TrustAsia 'log2026a'         |https://ct2026-a.trustasia.com/log2026a/       |Qualified|86400|2025-12-24T00:00:00Z   |2027-01-08T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
-|TrustAsia 'log2026b'         |https://ct2026-b.trustasia.com/log2026b/       |Qualified|86400|2025-12-24T00:00:00Z   |2027-01-08T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
+|TrustAsia 'log2026a'         |https://ct2026-a.trustasia.com/log2026a/       |Usable   |86400|2025-12-24T00:00:00Z   |2027-01-08T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
+|TrustAsia 'log2026b'         |https://ct2026-b.trustasia.com/log2026b/       |Usable   |86400|2025-12-24T00:00:00Z   |2027-01-08T00:00:00Z |TrustAsia    |trustasia-ct-logs@trustasia.com|
