@@ -8,7 +8,8 @@ Chrome maintains two policies for Certificate Transparency:
 
 Certificate Transparency (CT) is a protocol designed to fix several structural
 flaws in the SSL/TLS certificate ecosystem. Described in
-[RFC 6962](https://tools.ietf.org/html/rfc6962), it provides a public,
+[RFC 6962](https://tools.ietf.org/html/rfc6962), and expanded by
+[static-ct-api](https://c2sp.org/static-ct-api), it provides a public,
 append-only data structure that can log certificates that are issued by
 [certificate authorities](https://en.wikipedia.org/wiki/Certificate_authority) (CAs).
 

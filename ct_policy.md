@@ -31,7 +31,8 @@ Depending on how the SCTs are presented to Chrome, CT compliance can be achieved
 **Embedded SCTs:**
 1. At least one Embedded SCT from a CT Log that was `Qualified,` `Usable,` or `ReadOnly` at the time of check; and
 2. There are Embedded SCTs from at least N distinct CT Logs that were `Qualified`, `Usable`, `ReadOnly`, or `Retired` at the time of check, where N is defined in the following table; and
-3. Among the SCTs satisfying requirements 1 and 2, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome.
+3. Among the SCTs satisfying requirement 2, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome; and
+4. Among the SCTs satisfying requirement 2, at least one SCT must be issued from a log recognized by Chrome as being RFC6962-compliant.
 
 | Certificate Lifetime | Number of SCTs from distinct CT Logs |
 |:---:|:---:|
@@ -40,7 +41,8 @@ Depending on how the SCTs are presented to Chrome, CT compliance can be achieved
 
 **SCTs delivered via OCSP or TLS:**
 1. At least two SCTs from a CT Log that was `Qualified`, `Usable`, or `ReadOnly` at the time of check; and
-2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome.
+2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome; and
+3. Among the SCTs satisfying requirement 1, at least one SCT must be issued from a CT log recognized by Chrome as being RFC6962-compliant.
 
 For both embedded SCTs and those delivered via OCSP or TLS, Log Operator uniqueness is defined as having separate entries within the `operators` section of [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json). In the rare situation that a CT Log changes operators during its lifetime, CT logs in the [v3 log list schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json) optionally contain an list of `previous_operators`, accompanied by the final timestamp that this log was operated by the previous operator. To prevent log operator changes from breaking existing certificates, each SCT’s log operator is determined to be the operator at the time of SCT issuance, by comparing the SCT timestamp against the `previous_operators` timestamps, if present.
 
