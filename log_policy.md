@@ -1,5 +1,5 @@
 # Certificate Transparency Log Policy
-As specified by [RFC 6962](https://tools.ietf.org/html/rfc6962), Certificate Transparency includes a multi-party protocol for providing cryptographically-verifiable proofs to audit the issuance and security practices of Certificate Authorities.
+Certificate Transparency includes a multi-party protocol for providing cryptographically-verifiable proofs to audit the issuance and security practices of Certificate Authorities.
 
 To support such auditing, Chrome includes a list of Logs that have passed an application process and are recognized to be operating in the public interest. This Certificate Transparency Log Policy ("Policy") sets forth how a Certificate Transparency Log Operator may have its Log recognized within Chrome as well as the ongoing expectations of these Log Operators. This policy may be updated by Google from time to time.
 
@@ -9,47 +9,64 @@ To support such auditing, Chrome includes a list of Logs that have passed an app
 Before applying for their first CT Logs to be added to Chrome, new CT Log Operators should first read and fully comprehend the ongoing requirements for CT Logs specified in this Policy. Once a Log Operator is confident they can meet these requirements and has deployed a set of temporally-sharded CT Logs ready for application, they should follow the below process for adding these Logs to Chrome.
 
 ### New CT Log Operators
-New CT Log Operators should begin their application process by first [filing a new CT Log Operator bug](https://issues.chromium.org/u/1/issues/new?component=1456813&template=0) on the Chromium Issue Tracker, and provide:
-* Contact Information for the Log Operator, including:
-	* An email or e-mail alias that is continuously monitored by the Log Operator
-	* A list of person(s) authorized to represent the Log Operator when communicating with the Chrome team
+New CT Log Operators should begin their application process by first [filing a new CT Log Operator bug](https://issues.chromium.org/issues/new?component=1456813&template=0) on the Chromium Issue Tracker, and provide contact Information for the Log Operator, including:
+ * An email or e-mail alias that is continuously monitored by the Log Operator, and
+ * a list of person(s) authorized to represent the Log Operator when communicating with the Chrome team.
 
 This bug will be used to track all CT Logs operated by this Log Operator for as long as any Logs operated by this organization are `Pending`, `Qualified`, `Usable`, `ReadOnly`, or `Retired`. By creating a new CT Log Operator bug, applicants are asserting they are organizationally independent from all existing CT Log Operators, which can be observed in the [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json) file hosted by Google. If an organizational change occurs that alters this independence, CT Log Operators are required to notify Chrome at chrome-certificate-transparency@google.com as soon as possible.
 
 ### Existing CT Log Operators
 Once the Chrome team has confirmed the Log Operator’s contact information, or if an existing Log Operator is applying for additional CT Logs to be added to Chrome,  the CT Log Operator must next provide the following information about the new CT Logs in their existing CT Log Operator bug:
-* Public HTTP endpoints that respond to all Log Client Messages indicated in RFC 6962, Section 4
-* The Logs’ public keys, attached as a binary file containing the DER encoding of the SubjectPublicKeyInfo ASN.1 structure
-* A description of the Logs, including applicable policies or requirements for logging certificates
-* The Maximum Merge Delay (MMD) of the Logs
-* The set of Accepted Root Certificates of the Logs
-* The expiry ranges of each Log in the form [rangeBegin, rangeEnd). 
+* A description of the Logs, including applicable policies or requirements for logging certificates, and whether these Logs are compliant with RFC6962 or static-ct-api.
+* Public HTTP endpoints that respond to all Log Client Messages indicated in RFC 6962, Section 4, or Submission and Monitoring APIs specified in [c2sp.org/static-ct-api](https://c2sp.org/static-ct-api) v1.0, as appropriate.
+* The Logs’ public keys, attached as a binary file containing the DER encoding of the SubjectPublicKeyInfo ASN.1 structure.
+* The Maximum Merge Delay (MMD) of the Logs.
+* The set of Accepted Root Certificates of the Logs.
+* The expiry ranges of each Log in the form [rangeBegin, rangeEnd).
 	* Certificate expiry ranges for a set of Logs must be contiguous, with no gaps, and each expiry range should be between 6 and 12 months.
 * Whether the Logs will reject logging submissions for expired or revoked certificates.
 
-After acceptance, Google will monitor the Logs, including random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs’ conformance to RFC 6962, confirming the Logs’ availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
+After acceptance, Google will monitor the Logs, including random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs’ conformance to RFC 6962 or static-ct-api v1.0 (as appropriate), confirming the Logs’ availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
 
 To enable compliance monitoring, Log Operators will be asked to include Google's Merge Delay Monitor Root certificate in the set of accepted root certificates of their Logs.
 
 ---
 
+## Log API Specification Requirements
+Prior to April 1st, 2025, all logs applying for inclusion in Chrome's log list must conform with RFC 6962. Starting April 1st, 2025, operators may additionally submit logs for inclusion that conform instead to the static-ct-api C2SP specification. Insofar as is possible, Chrome's requirements are equivalent between static-ct-api and RFC 6962 logs, however:
+ 1. Static-ct-api logs must not specify a MMD greater than 1 minute.
+ 2. During the validation phase, existing operators of RFC 6962 logs included in Chrome's log list should continue to operate those logs (or RFC 6962 logs covering the same set of certificates).
+
+---
+
 ## Ongoing Requirements of Included Logs
 In order for their Logs to remain included within Chrome after first becoming `Qualified`, Log Operators must continue to operate these Logs in accordance with this Policy. Log Operators must:
-* Monitor the [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) group for relevant updates to policy or requirements for CT Log Operators
-* Have no outage that exceeds an MMD of more than 24 hours. Outages include, but are not limited to: network level outages, expiration of the Log’s SSL certificate, a failure to accept new Certificates to be logged (with the exception of the conditions defined in the Logging Submission Acceptance section below), HTTP response status codes other than 200, or responses that include data that does not conform to RFC 6962.
-* Conform to RFC 6962, including the implementation of all API endpoints defined within Section 4 of RFC 6962
-* Not impose conditions on retrieving or sharing data from the Logs
-* Maintain Log availability of 99% or above, with no outage lasting longer than the MMD (as measured by Google)
+* Monitor the [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) group for relevant updates to policy or requirements for CT Log Operators.
+* Incorporate a certificate for which an SCT has been issued by the Log within the MMD.
+	* When Logs receive a logging submission for an already-incorporated certificate, Logs must either return an existing SCT or, if creating a new one, add another certificate entry within the MMD such that the new SCT can be verified using the Log’s CT APIs
+* Maintain Log availability of 99% or above.
+	* Log availability is measured on a per-endpoint basis over a 90-day rolling average from all requests made to the log by the Chrome team's compliance monitoring infrastructure. The log’s overall availability is represented by the minimum of all per-endpoint availabilities.
+	* Behavior that results in reduced availability includes, but is not limited to: network level outages, expiration of the Log’s SSL certificate, a failure to accept new Certificates to be logged (with the exception of the conditions defined in the Logging Submission Acceptance section below), HTTP response status codes other than 200, or responses that include data that does not conform to the log's corresponding API specification.
+* Ensure their Logs conform to the totality of the API specification indicated in the Log's application.
+* Not impose conditions on retrieving or sharing data from the Logs.
+* Maintain Log availability of 99% or above, with no outage lasting longer than the MMD (as measured by Google).
 * Not present two or more conflicting views of the Merkle Tree at different times and/or to different parties.
 * Incorporate a certificate for which an SCT has been issued by the Log within the MMD.
 	* When Logs receive a logging submission for an already-incorporated certificate, Logs must either return an existing SCT or, if creating a new one, add another certificate entry within the MMD such that the new SCT can be verified using the APIs specified in RFC 6962.
 * Accept certificates issued by Google’s Merge Delay Monitor Root to enable Google to monitor the Log’s compliance to these policies.
 * Operate their Logs in good faith, including, but not limited to each Log Operator:
-	* Verifiably incorporating all certificates into the Log for which SCTs have been issued, within the Log’s MMD
+	* Verifiably incorporating all certificates into the Log for which SCTs have been issued, within the Log’s MMD.
 	* Maintaining the append-only property of the Log by providing consistent views of the Merkle Tree at all times and to all parties.
-* Notify the Chrome team of any and all changes to information gathered during the Log Inclusion by detailing such changes in an update to the CT Log Operator bug on the [Chromium Issue Tracker](https://bugs.chromium.org/p/chromium/issues/list?q=component%3AInternals%3ENetwork%3ECertTrans) in which they requested Log Inclusion.
+* Notify the Chrome team of any and all changes to information gathered during the Log Inclusion by detailing such changes in an update to the CT Log Operator bug on the [Chromium Issue Tracker](https://issues.chromium.org/issues?q=status:open%20componentid:1456813) in which they requested Log Inclusion.
 
-Google will notify Log Operators of changes to these requirements as well as effective dates for those changes via announcements to the [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy). Log Operators that fail to meet these requirements will be in violation of this Policy, which may result in removal of the Log(s) from Chrome.
+Google will notify Log Operators of changes to these requirements as well as effective dates for those changes via announcements to the [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy).
+
+---
+
+## Incident Detection and Response
+Log operators should implement proactive monitoring to detect log conditions that could lead to a policy violation or incident. In the event that a log policy violation occurs, Log Operators are expected to work to mitigate and correct those issues in a timely fashion, ensuring [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) is kept apprised of findings and actions.
+ * Incidents reported to [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) should be acknowledged within 24 hours and followed up with the results of the subsequent investigation and mitigation measures.
+ * In some circumstances, such as responding to an incident, log operators may be forced to make a decision that favors compliance with one requirement over another. To ensure that SCTs remain a strong indicator that a certificate was issued transparently, Log Operators are encouraged to implement mechanisms in their Logs that prioritize the timely inclusion and availability of log entries over the continued availability of `add-chain` and `add-pre-chain` APIs.
 
 ---
 
@@ -81,4 +98,6 @@ In order to have their Logs accepted for inclusion, Log Operators should deploy 
 ---
 
 ## Policy Violations
-The Chrome team includes CT Logs at their sole discretion, to further public auditability of Certificate Authorities. Upon learning of a Log’s potential violation of this Policy, they will review the information and may take corrective actions to preserve the integrity of its CT Log program. CT Logs may be removed from Chrome at any time, and for any reason.
+Upon learning of a Log’s potential violation of this Policy, the Chrome team will review all information available, including the log operator's response, and may take corrective actions to preserve the integrity of its CT Log program and the CT ecosystem broadly.
+
+The Chrome team includes CT Logs at their sole discretion to further public auditability of Certificate Authorities. CT Logs may be removed from Chrome at any time, and for any reason.
