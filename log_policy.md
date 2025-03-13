@@ -28,7 +28,7 @@ Once the Chrome team has confirmed the Log Operator’s contact information, or 
 
 After acceptance, Google will monitor the Logs, including random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs’ conformance to RFC 6962 or static-ct-api v1.0 (as appropriate), confirming the Logs’ availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
 
-To enable compliance monitoring, Log Operators will be asked to include Google's Merge Delay Monitor Root certificate in the set of accepted root certificates of their Logs.
+To enable compliance monitoring, Log Operators will be asked to include Google's Merge Delay Monitor Root certificate in the set of accepted root certificates of their Logs. Log operators should expect ongoing querying of their logs from Google's compliance monitoring infrastructure throughout the lifetime of the log.
 
 ---
 
@@ -49,10 +49,7 @@ In order for their Logs to remain included within Chrome after first becoming `Q
 	* Behavior that results in reduced availability includes, but is not limited to: network level outages, expiration of the Log’s SSL certificate, a failure to accept new Certificates to be logged (with the exception of the conditions defined in the Logging Submission Acceptance section below), HTTP response status codes other than 200, or responses that include data that does not conform to the log's corresponding API specification.
 * Ensure their Logs conform to the totality of the API specification indicated in the Log's application.
 * Not impose conditions on retrieving or sharing data from the Logs.
-* Maintain Log availability of 99% or above, with no outage lasting longer than the MMD (as measured by Google).
 * Not present two or more conflicting views of the Merkle Tree at different times and/or to different parties.
-* Incorporate a certificate for which an SCT has been issued by the Log within the MMD.
-	* When Logs receive a logging submission for an already-incorporated certificate, Logs must either return an existing SCT or, if creating a new one, add another certificate entry within the MMD such that the new SCT can be verified using the APIs specified in RFC 6962.
 * Accept certificates issued by Google’s Merge Delay Monitor Root to enable Google to monitor the Log’s compliance to these policies.
 * Operate their Logs in good faith, including, but not limited to each Log Operator:
 	* Verifiably incorporating all certificates into the Log for which SCTs have been issued, within the Log’s MMD.
