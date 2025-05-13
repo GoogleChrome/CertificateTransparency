@@ -25,6 +25,7 @@ Once the Chrome team has confirmed the Log Operator’s contact information, or 
 * The expiry ranges of each Log in the form [rangeBegin, rangeEnd).
 	* Certificate expiry ranges for a set of Logs must be contiguous, with no gaps, and each expiry range should be between 6 and 12 months.
 * Whether the Logs will reject logging submissions for expired or revoked certificates.
+* A description of any rate limiting policies applied to the Logs.
 
 After acceptance, Google will monitor the Logs, including random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs’ conformance to RFC 6962 or static-ct-api v1.0 (as appropriate), confirming the Logs’ availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
 
@@ -101,7 +102,7 @@ Log data availability is of paramount importance. All rate limits must be set to
 
 If a log is unable to provide sufficient `get-entries` capacity to ensure these requirements, operators should apply rate limiting to `add-chain` and `add-pre-chain` log endpoints to reduce overall load on the log. Operators should work to ensure that the impact of reduced log availability is minimized on time-sensitive certificate issuance, such as by specifically prioritizing `add-pre-chain` over `add-chain` endpoints, or by more aggressively limiting submissions of certificates with `notBefore` dates significantly in the past.
 
-A description of the log's rate limiting policies must be posted to the log operator's chromium bug whenever limits are updated.
+The log operator's chromium bug should be kept up to date with a description of all rate limiting policies applied to the log.
 
 Logs that are only able to operate with rate limits that prevent typical usage of the log by certificate submitters or monitors may be removed from Chrome's log list for failure to provide an adequate level of service.
 
