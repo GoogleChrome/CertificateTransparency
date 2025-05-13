@@ -92,6 +92,19 @@ In order to have their Logs accepted for inclusion, Log Operators should deploy 
 * CT Logs will be removed from Chrome once their certificate expiry range has passed. When Log Operators in good standing have one of their Logs removed in this manner, they should stand up a new CT Log whose expiry range extends the set of contiguous expiry ranges 
 	* Following the example from above, when Log2020 is removed in early 2021, the Log Operator should stand up Log2024 and apply for its inclusion, following the Application Process defined above.
 
+### Rate Limiting
+Rate limiting is a form of reduced log availability, and log operators are expected to ensure that their logs operate without hitting rate limiting whenever possible. Operators whose logs require rate limiting during normal operation (i.e. not during a DoS attack or other acute issue) should investigate adding caching or other techniques to ensure adequate capacity such that the logs do not rely on rate limiting.
+
+If rate limiting is necessary, operators should prefer per-IP rate limiting (or other forms of per-client limiting) over shared global rate limits.
+
+Log data availability is of paramount importance. All rate limits must be set to ensure that all well-behaved clients can reliably retrieve log entries at a rate greater than the growth rate of the log. For instance, if the log's typical growth rate is `X` entries/second, and `get-entries` are limited to `Y` entries per request, per-client limits should be no less than `ceil(X/Y)` requests/sec. Operators must also ensure that well-behaved clients retrieving entries have a sufficient opportunity to catch up with growth that occurred during periods of global rate limiting. Operators are encouraged to ensure sufficiently high limits such that clients can catch up in a reasonable period of time.
+
+If a log is unable to provide sufficient `get-entries` capacity to ensure these requirements, operators should apply rate limiting to `add-chain` and `add-pre-chain` log endpoints to reduce overall load on the log. Operators should work to ensure that the impact of reduced log availability is minimized on time-sensitive certificate issuance, such as by specifically prioritizing `add-pre-chain` over `add-chain` endpoints, or by more aggressively limiting submissions of certificates with `notBefore` dates significantly in the past.
+
+A description of the log's rate limiting policies must be posted to the log operator's chromium bug whenever limits are updated.
+
+Logs that are only able to operate with rate limits that prevent typical usage of the log by certificate submitters or monitors may be removed from Chrome's log list for failure to provide an adequate level of service.
+
 ---
 
 ## Policy Violations
