@@ -20,7 +20,7 @@ Once the Chrome team has confirmed the Log Operator’s contact information, or 
 * A description of the Logs, including applicable policies or requirements for logging certificates, and whether these Logs are compliant with RFC6962 or static-ct-api.
 * A JSON object (one per log) containing:
     * a public HTTP endpoint that responds to all Log Client Messages indicated in RFC 6962, Section 4, or HTTP endpoints responding to Submission and Monitoring APIs specified in [c2sp.org/static-ct-api](https://c2sp.org/static-ct-api) v1.0, as appropriate.
-    * the Logs’ public key, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, base64-encoded,
+    * the Log's public key, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, base64-encoded,
     * the SHA-256 hash of the Log's public key, base64-encoded (i.e. the LogID provided in SCTs issued by the log),
     * the Maximum Merge Delay (MMD) of the Log, and
     * the expiry range of the Log.

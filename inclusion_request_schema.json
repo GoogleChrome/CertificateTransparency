@@ -5,7 +5,8 @@
 	"required": [
 		"key",
 		"log_id",
-		"mmd"
+		"mmd",
+		"temporal_interval"
 	],
 	"oneOf": [
 		{
