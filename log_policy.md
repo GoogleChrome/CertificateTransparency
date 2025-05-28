@@ -18,17 +18,17 @@ This bug will be used to track all CT Logs operated by this Log Operator for as 
 ### Existing CT Log Operators
 Once the Chrome team has confirmed the Log Operator’s contact information, or if an existing Log Operator is applying for additional CT Logs to be added to Chrome,  the CT Log Operator must next provide the following information about the new CT Logs in their existing CT Log Operator bug:
 * A description of the Logs, including applicable policies or requirements for logging certificates, and whether these Logs are compliant with RFC6962 or static-ct-api.
-* A JSON object (one per log) conforming to the [provided schema](inclusion_request_schema.json) containing:
+* A JSON object (one per log) containing:
     * a public HTTP endpoint that responds to all Log Client Messages indicated in RFC 6962, Section 4, or HTTP endpoints responding to Submission and Monitoring APIs specified in [c2sp.org/static-ct-api](https://c2sp.org/static-ct-api) v1.0, as appropriate.
-    * the Logs’ public keys, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, base64-encoded,
-    * the SHA-256 hash of the Log's public key, base64-encoded (the LogID provided in SCTs issued by the log),
+    * the Logs’ public key, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, base64-encoded,
+    * the SHA-256 hash of the Log's public key, base64-encoded (i.e. the LogID provided in SCTs issued by the log),
     * the Maximum Merge Delay (MMD) of the Log, and
     * the expiry range of the Log.
 * The initial set of Accepted Root Certificates of the Logs.
 * Whether the Logs will reject logging submissions for expired or revoked certificates.
 * A description of any rate limiting policies applied to the Logs.
 
-The JSON object may be provided directly in the log inclusion bug (e.g. pasted into the log) or the operator may provide per-log URLs serving the applicable information.
+The JSON objects must conform to the [provided schema](inclusion_request_schema.json) and may be provided either directly in the log inclusion bug or via per-log URLs.
 
 Note that certificate expiry ranges for a set of Logs must be contiguous, with no gaps, and each log's expiry range should be between 3 and 12 months.
 
