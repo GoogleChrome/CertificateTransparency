@@ -18,18 +18,23 @@ This bug will be used to track all CT Logs operated by this Log Operator for as 
 ### Existing CT Log Operators
 Once the Chrome team has confirmed the Log Operator’s contact information, or if an existing Log Operator is applying for additional CT Logs to be added to Chrome,  the CT Log Operator must next provide the following information about the new CT Logs in their existing CT Log Operator bug:
 * A description of the Logs, including applicable policies or requirements for logging certificates, and whether these Logs are compliant with RFC6962 or static-ct-api.
-* Public HTTP endpoints that respond to all Log Client Messages indicated in RFC 6962, Section 4, or Submission and Monitoring APIs specified in [c2sp.org/static-ct-api](https://c2sp.org/static-ct-api) v1.0, as appropriate.
-* The Logs’ public keys, attached as a binary file containing the DER encoding of the SubjectPublicKeyInfo ASN.1 structure.
-* The Maximum Merge Delay (MMD) of the Logs.
-* The set of Accepted Root Certificates of the Logs.
-* The expiry ranges of each Log in the form [rangeBegin, rangeEnd).
-	* Certificate expiry ranges for a set of Logs must be contiguous, with no gaps, and each expiry range should be between 6 and 12 months.
+* A JSON object (one per log) conforming to the [provided schema](inclusion_request_schema.json) containing:
+    * a public HTTP endpoint that responds to all Log Client Messages indicated in RFC 6962, Section 4, or HTTP endpoints responding to Submission and Monitoring APIs specified in [c2sp.org/static-ct-api](https://c2sp.org/static-ct-api) v1.0, as appropriate.
+    * the Logs’ public keys, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, base64-encoded,
+    * the SHA-256 hash of the Log's public key, base64-encoded (the LogID provided in SCTs issued by the log),
+    * the Maximum Merge Delay (MMD) of the Log, and
+    * the expiry range of the Log.
+* The initial set of Accepted Root Certificates of the Logs.
 * Whether the Logs will reject logging submissions for expired or revoked certificates.
 * A description of any rate limiting policies applied to the Logs.
 
-After acceptance, Google will monitor the Logs, including random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs’ conformance to RFC 6962 or static-ct-api v1.0 (as appropriate), confirming the Logs’ availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
+The JSON object may be provided directly in the log inclusion bug (e.g. pasted into the log) or the operator may provide per-log URLs serving the applicable information.
 
-To enable compliance monitoring, Log Operators will be asked to include Google's Merge Delay Monitor Root certificate in the set of accepted root certificates of their Logs. Log operators should expect ongoing querying of their logs from Google's compliance monitoring infrastructure throughout the lifetime of the log.
+Note that certificate expiry ranges for a set of Logs must be contiguous, with no gaps, and each log's expiry range should be between 3 and 12 months.
+
+After acceptance, Google will monitor the Logs, including via random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs’ conformance to RFC 6962 or static-ct-api v1.0 (as appropriate), confirming the Logs’ availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
+
+To enable compliance monitoring, Log Operators must include Google's Merge Delay Monitor Root certificate in the set of accepted root certificates of their Logs. Log operators should expect ongoing querying of their logs from Google's compliance monitoring infrastructure throughout the lifetime of the log.
 
 ---
 

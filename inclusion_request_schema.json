@@ -1,0 +1,82 @@
+{
+	"type": "object",
+	"id": "https://googlechrome.github.io/CertificateTransparency/inclusion_request_schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"required": [
+		"key",
+		"log_id",
+		"mmd"
+	],
+	"oneOf": [
+		{
+			"required": ["url"]
+		},
+		{
+			"required": ["monitoring_url", "submission_url"]
+		}
+	],
+	"properties": {
+		"key": {
+			"title": "The public key of the CT log",
+			"description": "The log's public key as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, then encoded as base64 (https://tools.ietf.org/html/rfc5280#section-4.1.2.7).",
+			"type": "string"
+		},
+		"log_id": {
+			"title": "The SHA-256 hash of the CT log's public key, base64-encoded",
+			"description": "This is the LogID found in SCTs issued by this log (https://tools.ietf.org/html/rfc6962#section-3.2).",
+			"type": "string",
+			"minLength": 44,
+			"maxLength": 44
+		},
+		"mmd": {
+			"title": "The Maximum Merge Delay, in seconds",
+			"description": "The CT log should not take longer than this to incorporate a certificate (https://tools.ietf.org/html/rfc6962#section-3).",
+			"type": "number",
+			"minimum": 1
+		},
+		"temporal_interval": {
+			"description": "The log will only accept certificates that expire (have a NotAfter date) between these dates.",
+			"type": "object",
+			"required": [
+				"start_inclusive",
+				"end_exclusive"
+			],
+			"properties": {
+				"start_inclusive": {
+					"description": "All certificates must expire on this date or later.",
+					"type": "string",
+					"format": "date-time",
+					"examples": [
+						"2025-01-01T00:00:00Z"
+					]
+				},
+				"end_exclusive": {
+					"description": "All certificates must expire before this date.",
+					"type": "string",
+					"format": "date-time",
+					"examples": [
+						"2026-01-01T00:00:00Z"
+					]
+				}
+			}
+		},
+		"url": {
+			"title": "The base URL of the CT log's RFC6962-compliant HTTP API",
+			"description": "The API endpoints are defined in https://tools.ietf.org/html/rfc6962#section-4.",
+			"type": "string",
+			"format": "uri"
+		},
+		"submission_url": {
+			"title": "The static-ct-api-compliant submission prefix of the log",
+			"description": "The API endpoints are defined in https://c2sp.org/static-ct-api",
+			"type": "string",
+			"format": "uri"
+		},
+		"monitoring_url": {
+			"title": "The static-ct-api-compliant monitoring prefix of the log",
+			"description": "The API endpoints are defined in https://c2sp.org/static-ct-api",
+			"type": "string",
+			"format": "uri"
+		}
+	}
+}
