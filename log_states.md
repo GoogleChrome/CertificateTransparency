@@ -83,7 +83,7 @@ The `Usable` state is not a state that is specifically recognized by Chrome clie
 ## `ReadOnly`
 If a Log Operator wishes to cease accepting certificate logging requests, they may request that their `Qualified` or `Usable` CT Log(s) be placed in the `ReadOnly` state. CT Logs that become `ReadOnly` mode are making an assertion that they will stop issuing new SCTs, but will continue to operate the CT Log in accordance with the [Certificate Transparency Log Policy](log_policy.md).
 
-When a Log becomes `ReadOnly`, the final tree size is published to the Google-hosted [CT Log List](https://www.gstatic.com/ct/log_list/v3/log_list.json) to signal that this Log should not grow past this point. To help ensure this behavior, CT Monitors should continue monitoring `ReadOnly` Logs until they become `Retired` or `Rejected`.
+When a Log becomes `ReadOnly`, the final tree size is published to the Google-hosted [CT Log List](log_lists.md) to signal that this Log should not grow past this point. To help ensure this behavior, CT Monitors should continue monitoring `ReadOnly` Logs until they become `Retired` or `Rejected`.
 
 **How `ReadOnly` CT Logs transition to other states:**
 * `ReadOnly` CT Logs transition to `Retired` if they demonstrate a serious or sustained pattern of CT Policy or API specification compliance issues, or if the Log Operator ceases operation of their CT Log(s). Due to the inability for Chrome to distinguish between intentional and accidental non-compliance, such issues are treated as highest possible severity, which results in the CT Log being `Retired`.
@@ -115,7 +115,7 @@ Once a CT Log becomes `Retired`, there are no longer any expectations that it co
 
 **Chrome Behavior:**
 
-`Retired` Logs are included in the [CT Log List](https://cs.chromium.org/chromium/src/components/certificate_transparency/data/log_list.json) that is shipped in Chrome, but include both an indicator that the Log is now `Retired` as well as the corresponding Retirement timestamp.
+`Retired` Logs are included in the [CT Log List](log_lists.md) that is shipped in Chrome, but include both an indicator that the Log is now `Retired` as well as the corresponding Retirement timestamp.
 
 Embedded SCTs from `Retired` Logs count towards certain requirements for CT compliance; however, as outlined in [Chrome CT Policy](ct_policy.md), in order for a certificate to be CT Compliant, SCTs from `Retired` Logs must be accompanied by at least one SCT from a Log that was `Qualified`, `Usable`, or `ReadOnly` at time of check.
 
