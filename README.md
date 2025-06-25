@@ -1,8 +1,9 @@
 # Certificate Transparency in Chrome
 
-Chrome maintains two policies for Certificate Transparency:
+Chrome maintains three policies for Certificate Transparency:
 * The [Chrome CT Policy](https://goo.gl/chrome/ct-policy) outlines the criteria for certificates to be deemed _CT Compliant_ in CT-enforcing versions of Chrome.
 * The [Chrome CT Log Policy](https://goo.gl/chrome/ct-log-policy) describes what requirements Chrome places on current and prospective CT Log Operators.
+* The [Chrome CT Log List Policy](log_lists.md) describes what requirements Chrome places on users of Chrome's published CT Log Lists.
 
 ## Overview of Certificate Transparency
 

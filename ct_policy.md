@@ -44,7 +44,7 @@ Depending on how the SCTs are presented to Chrome, CT compliance can be achieved
 2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued from distinct CT Log Operators as recognized by Chrome; and
 3. Among the SCTs satisfying requirement 1, at least one SCT must be issued from a CT log recognized by Chrome as being RFC6962-compliant.
 
-For both embedded SCTs and those delivered via OCSP or TLS, Log Operator uniqueness is defined as having separate entries within the `operators` section of [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json). In the rare situation that a CT Log changes operators during its lifetime, CT logs in the [v3 log list schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json) optionally contain an list of `previous_operators`, accompanied by the final timestamp that this log was operated by the previous operator. To prevent log operator changes from breaking existing certificates, each SCT’s log operator is determined to be the operator at the time of SCT issuance, by comparing the SCT timestamp against the `previous_operators` timestamps, if present.
+For both embedded SCTs and those delivered via OCSP or TLS, Log Operator uniqueness is defined as having separate entries within the `operators` section of [log_list.json](log_lists.md). In the rare situation that a CT Log changes operators during its lifetime, CT logs in the [v3 log list schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json) optionally contain an list of `previous_operators`, accompanied by the final timestamp that this log was operated by the previous operator. To prevent log operator changes from breaking existing certificates, each SCT’s log operator is determined to be the operator at the time of SCT issuance, by comparing the SCT timestamp against the `previous_operators` timestamps, if present.
 
 ### Important Notes
 So long as one of the above CT Compliance criteria is met by some combination of SCTs presented in the handshake, additional SCTs, regardless of the status of the SCT, will not affect a certificate’s CT Compliance status positively or negatively.
@@ -62,7 +62,7 @@ The criteria for how CT Logs can become `Qualified`, as well as what circumstanc
 ---
 
 ## CT Enforcement Timeout
-Every day, Google publishes a new [CT Log list](https://www.gstatic.com/ct/log_list/v3/log_list.json) that contains a fresh `log_list_timestamp`. These updated log lists are merged back to both Chromium top-of-tree as well as to Chrome release branches. When a new version of Chrome is released, it will enforce CT for 70 days (10 weeks) after its freshest `log_list_timestamp`. 
+Every day, Google publishes a new [CT Log list](log_lists.md) that contains a fresh `log_list_timestamp`. These updated log lists are merged back to both Chromium top-of-tree as well as to Chrome release branches. When a new version of Chrome is released, it will enforce CT for 70 days (10 weeks) after its freshest `log_list_timestamp`. 
 
 Since Chrome 94, Chrome clients will also attempt to obtain updated CT Log lists from the [Component Updater](https://chromium.googlesource.com/chromium/src/+/lkgr/components/component_updater/README.md) infrastructure several times per day. On a successful update of the CT Log list, Chrome will update the start of its 70 day CT enforcement window to the freshest `log_list_timestamp`.
 
