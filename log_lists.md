@@ -9,7 +9,7 @@ varieties of these lists published:
    list was generated.
  * [`all_logs_list.json`](https://www.gstatic.com/ct/log_list/v3/all_logs_list.json)
    contains the logs in `log_list.json`, alongside logs that may be `Pending`,
-   `Retired`, or but have never applied for inclusion in Chrome's log list.
+   `Retired`, or have never applied for inclusion in Chrome's log list.
 
 Both of these lists follow a published log list
 [schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json). Chrome
