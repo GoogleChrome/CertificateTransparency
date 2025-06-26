@@ -69,13 +69,13 @@
 		},
 		"submission_url": {
 			"title": "The static-ct-api-compliant submission prefix of the log",
-			"description": "The API endpoints are defined in https://c2sp.org/static-ct-api",
+			"description": "The API endpoints are defined in https://c2sp.org/static-ct-api@v1.0.0",
 			"type": "string",
 			"format": "uri"
 		},
 		"monitoring_url": {
 			"title": "The static-ct-api-compliant monitoring prefix of the log",
-			"description": "The API endpoints are defined in https://c2sp.org/static-ct-api",
+			"description": "The API endpoints are defined in https://c2sp.org/static-ct-api@v1.0.0",
 			"type": "string",
 			"format": "uri"
 		}

@@ -17,9 +17,9 @@ This bug will be used to track all CT Logs operated by this Log Operator for as 
 
 ### Existing CT Log Operators
 Once the Chrome team has confirmed the Log Operator's contact information, or if an existing Log Operator is applying for additional CT Logs to be added to Chrome,  the CT Log Operator must next provide the following information about the new CT Logs in their existing CT Log Operator bug:
-* A description of the Logs, including applicable policies or requirements for logging certificates, and whether these Logs are compliant with RFC6962 or static-ct-api.
+* A description of the Logs, including applicable policies or requirements for logging certificates, and whether these Logs are compliant with RFC6962 or static-ct-api v1.0.0.
 * A JSON object (one per log) containing:
-    * a public HTTP endpoint that responds to all Log Client Messages indicated in RFC 6962, Section 4, or HTTP endpoints responding to Submission and Monitoring APIs specified in [c2sp.org/static-ct-api](https://c2sp.org/static-ct-api) v1.0, as appropriate,
+    * a public HTTP endpoint that responds to all Log Client Messages indicated in RFC 6962, Section 4, or HTTP endpoints responding to Submission and Monitoring APIs specified in [c2sp.org/static-ct-api@v1.0.0](https://c2sp.org/static-ct-api@v1.0.0), as appropriate,
     * the Log's public key, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo structure, base64-encoded,
     * the SHA-256 hash of the Log's public key, base64-encoded (i.e. the LogID provided in SCTs issued by the log),
     * the Maximum Merge Delay (MMD) of the Log, and
@@ -32,14 +32,14 @@ The JSON objects must conform to the [provided schema](inclusion_request_schema.
 
 Note that certificate expiry ranges for a set of Logs must be contiguous, with no gaps, and each log's expiry range should be between 3 and 12 months.
 
-After acceptance, Google will monitor the Logs, including via random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs' conformance to RFC 6962 or static-ct-api v1.0 (as appropriate), confirming the Logs' availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
+After acceptance, Google will monitor the Logs, including via random compliance testing, prior to its inclusion within Chrome. Such compliance testing will include, but is not limited to, verifying the Logs' conformance to RFC 6962 or static-ct-api v1.0.0 (as appropriate), confirming the Logs' availability meets the requirements of this Policy, and confirming the Logs are append-only and consistent from every point of view.
 
 To enable compliance monitoring, Log Operators must include Google's Merge Delay Monitor Root certificate in the set of accepted root certificates of their Logs. Log operators should expect ongoing querying of their logs from Google's compliance monitoring infrastructure throughout the lifetime of the log.
 
 ---
 
 ## Log API Specification Requirements
-Prior to April 1st, 2025, all logs applying for inclusion in Chrome's log list must conform with RFC 6962. Starting April 1st, 2025, operators may additionally submit logs for inclusion that conform instead to the static-ct-api C2SP specification. Insofar as is possible, Chrome's requirements are equivalent between static-ct-api and RFC 6962 logs, however:
+Prior to April 1st, 2025, all logs applying for inclusion in Chrome's log list must conform with RFC 6962. Starting April 1st, 2025, operators may additionally submit logs for inclusion that conform instead to the static-ct-api v1.0.0 C2SP specification. Insofar as is possible, Chrome's requirements are equivalent between static-ct-api and RFC 6962 logs, however:
  1. Static-ct-api logs must not specify a MMD greater than 1 minute.
  2. During the validation phase, existing operators of RFC 6962 logs included in Chrome's log list should continue to operate those logs (or RFC 6962 logs covering the same set of certificates).
 
