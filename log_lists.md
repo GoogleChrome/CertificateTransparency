@@ -4,17 +4,17 @@ Google publishes what CT logs are known and trusted by the Chrome browser
 (collectively the "CT Log Lists"), predominately in JSON format. There are two
 varieties of these lists published:
 
- * [`log_list.json`](https://www.gstatic.com/ct/log_list/v3/log_list.json)
+ * [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json)
    contains logs that are `Qualified`, `Usable`, or `Retired` as of when the
    list was generated.
- * [`all_logs_list.json`](https://www.gstatic.com/ct/log_list/v3/all_logs_list.json)
+ * [all_logs_list.json](https://www.gstatic.com/ct/log_list/v3/all_logs_list.json)
    contains the logs in `log_list.json`, alongside logs that may be `Pending`,
    `Retired`, or have never applied for inclusion in Chrome's log list.
 
 Both of these lists follow a published log list
 [schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json). Chrome
 also signs these lists
-([`log_list`](https://www.gstatic.com/ct/log_list/v3/log_list.sig)/[`all_logs_list`](https://www.gstatic.com/ct/log_list/v3/all_logs_list.sig))
+([log_list](https://www.gstatic.com/ct/log_list/v3/log_list.sig)/[all_logs_list](https://www.gstatic.com/ct/log_list/v3/all_logs_list.sig))
 to facilitate offline verification of the
 contents using a published [public
 key](https://www.gstatic.com/ct/log_list/v3/log_list_pubkey.pem).
