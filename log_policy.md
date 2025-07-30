@@ -77,6 +77,10 @@ Log operators should implement proactive monitoring to detect log conditions tha
 ### Accepted Root Certificates
 In order to maintain broad utility to Chrome and its users, CT Logs are expected to accept logging submissions from CAs that are trusted by default in Chrome across all its supported platforms, including ChromeOS, Android, Linux, Windows, macOS, iOS. If a Log Operator plans to restrict the set of Accepted Root Certificates, this should be clearly stated in the CT Log Operator Application as well as the rationale for this restriction. **Note:** This restriction may prevent a CT Log from being accepted by Chrome for inclusion.
 
+Logs are encouraged to accept submissions chaining to any CA trusted by a major root stores. The CCADB offers [a report](https://ccadb.my.salesforce-sites.com/ccadb/RootCACertificatesIncludedByRSReportCSV) that lists all root certificates included in any of Apple's, Chrome's, Microsoft's, or Mozilla's rootstores. Logs should also consider augmenting this set with CAs currently under consideration for inclusion in at least one of those root stores, which is also available in an [additional CCADB report](https://ccadb.my.salesforce-sites.com/ccadb/RootCACertificatesInclusionReportCSV).
+
+Operators that automatically ingest these reports may update their logs' accepted roots to remain up to date with these reports without manually noting these changes on their CT Log Operator bug, so long as the bug is notes that the log tracks either or both of these CCADB reports.
+
 ### Rejecting Logging Submissions
 CT Logs are permitted to reject logging submissions for certificates that meet certain conditions, such as being expired or revoked at the time the submission was made. A logging rejection means that the CT Log will not incorporate a given certificate entry into the Merkle Tree even if the certificate chains to an Accepted Root Certificate. Rejected logging submissions **must not** be issued an SCT by the CT Log.
 
@@ -107,7 +111,7 @@ Log data availability is of paramount importance. All rate limits must be set to
 
 If a log is unable to provide sufficient `get-entries` capacity to ensure these requirements, operators should apply rate limiting to `add-chain` and `add-pre-chain` log endpoints to reduce overall load on the log. Operators should work to ensure that the impact of reduced log availability is minimized on time-sensitive certificate issuance, such as by specifically prioritizing `add-pre-chain` over `add-chain` endpoints, or by more aggressively limiting submissions of certificates with `notBefore` dates significantly in the past.
 
-The log operator's chromium bug should be kept up to date with a description of all rate limiting policies applied to the log.
+The CT Log Operator's bug should be kept up to date with a description of all rate limiting policies applied to the log.
 
 Logs that are only able to operate with rate limits that prevent typical usage of the log by certificate submitters or monitors may be removed from Chrome's log list for failure to provide an adequate level of service.
 
