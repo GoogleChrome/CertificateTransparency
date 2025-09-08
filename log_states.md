@@ -220,11 +220,9 @@ delivered via OCSP or TLS must come from CT Logs that are `Qualified`, `Usable`,
 or `ReadOnly` at time of check.
 
 **How `Retired` CT Logs transition to other states:**
-* `ReadOnly` CT Logs transition to `Rejected` if all certificates contained
+* `Retired` CT Logs transition to `Rejected` if all certificates contained
   therein are expired or if it is past the end of their certificate expiry range
-  specified in their CT Log application. Notably, the `ReadOnly` to `Rejected`
-  transition is not used as a more severe response to a CT Log’s compliance
-  issues.
+  specified in their CT Log application.
 
 **Expected Log Behavior:**
 
