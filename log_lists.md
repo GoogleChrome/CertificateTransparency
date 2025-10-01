@@ -22,40 +22,40 @@ key](https://www.gstatic.com/ct/log_list/v3/log_list_pubkey.pem).
 file](https://www.gstatic.com/ct/log_list/v3/log_list.zip).
 
 ## Log list changes
-Chrome's CT Log Lists are updated daily. Most changes to log states included in
-the CT Log Lists, and all schema or URL changes, are announced on
+Chrome's log lists are updated daily. Changes to the log lists' schema or URL
+are announced on
 [ct-policy@](https://groups.google.com/a/chromium.org/g/ct-policy/). Users of
 the log list should subscribe to and follow
 [ct-policy@](https://groups.google.com/a/chromium.org/g/ct-policy/) to ensure
 they stay apprised of any changes that may affect them.
 
 ## Availability, and SLAs
-Chrome's CT Log Lists are offered without SLA or availability guarantee. Google
-endeavors to ensure that the CT Log Lists are consistently available to enable
+Chrome's CT log lists are offered without SLA or availability guarantee. Google
+endeavors to ensure that the CT log lists are consistently available to enable
 authorized uses, however, consumers are encouraged to cache recent versions of
-the CT Log Lists to account for downtime or other issues in the published Lists.
+the CT log lists to account for downtime or other issues in the published Lists.
 
 ## Acceptable Use Policy
-Google Chrome makes its CT Log Lists available for the purposes of certificate
+Google Chrome makes its CT log lists available for the purposes of certificate
 submitters (such as certification authorities) and CT monitors and auditors
 wishing to remain compatible with, or investigate the contents of, the CT and
 WebPKI ecosystems.
 
-**Chrome's CT Log Lists may not be used to facilitate CT enforcement in TLS
+**Chrome's CT log lists may not be used to facilitate CT enforcement in TLS
 clients other than Chrome without explicit written permission from Chrome's CT
 team.**
 
-Unauthorized reliance on Chrome's CT Log Lists endangers not just your users,
+Unauthorized reliance on Chrome's CT log lists endangers not just your users,
 but Chrome users and the CT ecosystem as a whole. If you are exploring adding CT
 enforcement into your user agent, the Chrome CT team is happy to talk to you
 about how to do that in a way that is safe and compatible with the broader CT
 ecosystem.
 
-Using Chrome's CT Log List out of line with this policy is done at your own
-risk, and may result in breakage of your application. Google must be able to
-make changes to the CT Log Lists in response to incidents in the CT ecosystem so
-as to maintain the safety and security of Chrome users. Google may take steps to
-ensure that third-party dependencies on the CT Log Lists do not risk Google's
-ability to respond to such incidents, including unannounced changes to the log
-list to disrupt unauthorized use.
+Using Chrome's CT log lists out of line with this policy is done at your own
+risk, and is likely to result in the breakage of your application. Google must
+be able to make changes to the CT log lists in response to incidents in the CT
+ecosystem so as to maintain the safety and security of Chrome users, so Google
+may take steps to ensure that third-party dependencies on the CT log lists do
+not risk Google's ability to respond to such incidents, including unannounced
+changes to the log list to disrupt unauthorized use.
 
