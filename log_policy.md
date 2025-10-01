@@ -1,14 +1,22 @@
 # Certificate Transparency Log Policy
 Certificate Transparency includes a multi-party protocol for providing
 cryptographically-verifiable proofs to audit the issuance and security practices
-of Certificate Authorities.
+of Certification Authorities (CAs).
 
-To support such auditing, Chrome includes a list of Logs that have passed an
-application process and are recognized to be operating in the public interest.
-This Certificate Transparency Log Policy ("Policy") sets forth how a Certificate
-Transparency Log Operator may have its Log recognized within Chrome as well as
-the ongoing expectations of these Log Operators. This policy may be updated by
-Google from time to time.
+To support such auditing, Chrome includes a [list of logs](log_lists.md) that
+have passed an application process and are recognized to be operating in the
+public interest.  This Certificate Transparency Log Policy ("Policy") sets forth
+how a Certificate Transparency log operator may have its log recognized within
+Chrome for the purposes of certificates satisfying Chrome's [CT
+policy](ct_policy.md), as well as the ongoing expectations of these log
+operators. This policy may be updated from time to time.
+
+While CT logs are critical infrastructure for the web, many organizations with
+experience operating web services at scale have the prerequisites necessary to
+operate CT logs successfully. If you might be interested in operating logs,
+please reach out to the Chrome team at
+chrome-certificate-transparency@google.com. Chrome is keen to work with
+potential and current log operators to ensure those operators are successful.
 
 ---
 
@@ -135,28 +143,88 @@ with this Policy. Log operators must:
 
 Google will notify log operators of changes to these requirements as well as
 effective dates for those changes via announcements to the
-[ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy).
+[ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) ("ct-policy@") mailing list.
 
 ---
 
 ## Incident Detection and Response
-Log operators should implement proactive monitoring to detect log conditions
-that could lead to a policy violation or incident. In the event that a log
-policy violation occurs, Log Operators are expected to work to mitigate and
-correct those issues in a timely fashion, ensuring
-[ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy)
-is kept apprised of findings and actions.
- * Incidents reported to
-   [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy)
-   should be acknowledged within 24 hours and followed up with the results of
-   the subsequent investigation and mitigation measures.
- * In some circumstances, such as responding to an incident, log operators may
-   be forced to make a decision that favors compliance with one requirement over
-   another. To ensure that SCTs remain a strong indicator that a certificate was
-   issued transparently, Log Operators are encouraged to implement mechanisms in
-   their Logs that prioritize the timely inclusion and availability of log
-   entries over the continued availability of `add-chain` and `add-pre-chain`
-   APIs.
+Log operators are strongly encouraged to implement proactive alerting to detect
+log conditions that could lead to a policy violation or incident before an
+incident occurs. Even when incidents can not be avoided, we believe that log
+operators detecting issues with their own logs yields the quickest resolution.
+In particular, good candidates for alerting may include the logs' merge delay
+(if the log does not include entries synchronously), frequency of non-200 HTTP
+status codes, [Chrome's per-endpoint availability
+monitoring](https://www.gstatic.com/ct/compliance/endpoint_uptime.csv), and resource usage
+metrics. When log operators do not detect incidents on their own, incidents may
+be reported by the Chrome team or other members of the CT community, via the log
+operator's log inclusion bug, via email, or via
+[ct-policy@](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy).
+
+We expect all log incidents to be investigated and remediated by log operators
+promptly, regardless of how they were detected. Log operators should ensure
+adequate communication with the broader community and the Chrome team while logs
+are not meeting expectations by regularly emailing
+[ct-policy@](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy).
+This includes acknowledgement of the incident within one business day of
+becoming aware of the problem, regular updates on progress and remediation
+timeline while the incident is ongoing (typically no less than weekly), and a
+comprehensive postmortem once the incident is resolved.
+
+In some circumstances, log operators may be forced to make a decision that
+favors compliance with one requirement over another. To ensure that SCTs remain
+a strong indicator that a certificate was issued transparently, log operators
+are encouraged to implement mechanisms in their logs that prioritize the timely
+inclusion and availability of log entries over the continued availability of
+`add-chain` and `add-pre-chain` APIs.
+
+---
+
+## Chrome's Response to Incidents and Policy Violations
+Log incidents may result in the removal of the logs from Chrome's [log
+list](log_lists.md). The decision to remove logs is made at the Chrome team's
+discretion based on all information available. This typically includes the root
+cause of the incidents, the log operator’s response, and the impact Chrome's
+decision may have on the health of the broader CT ecosystem.
+
+The Chrome CT Program acknowledges that many log incidents are transient.In
+these cases, removal of the log from Chrome's log list may not be best outcome
+for Chrome, Chrome's users, or the CT ecosystem. As a result, transient
+incidents where the log operator takes steps to ensure similar incidents do not
+recur typically do not result in log log removal.
+
+Some common examples of incidents that typically do not result in removal
+include:
+ * Log downtime caused by a maintenance window preannounced to
+   [ct-policy@](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy).
+ * A log violating the MMD due to an unpredictable spike in load, subsequently
+   resolved by providing additional resources.
+ * A temporary log outage caused by an outage of a 3rd-party dependency (e.g. a
+   cloud provider).
+
+Some incidents necessitate the removal of impacted logs regardless of other
+factors. These incidents can include, but are not limited to:
+ * Incidents that prevent the log from being cryptographically verified (e.g.
+   bit flips included in the merkle tree structure).
+ * Incidents that result in the log failing to include a certificate for which
+   the log has issued an SCT, even after several days.
+ * Extended availability issues, such as when the log's availability over any 90
+   day window drops below 95%, or the log has an ongoing/intermittent
+   availability issue lasting two or more weeks.
+
+Regardless of incident severity, log operators should take steps to prevent
+their logs from experiencing similar incidents in the future.
+
+When logs are removed from Chrome's log list due to an incident, log operators
+are typically encouraged to submit a replacement log (covering the same
+certificate expiry window) for inclusion in Chrome's log list as soon as they're
+able. This helps to ensure adequate capacity in the CT ecosystem.
+
+Logs that are removed from Chrome's log list are typically transitioned to the
+`Retired` [state](log_states.md). The Chrome team may also consider
+transitioning the log to `ReadOnly` if the log operator is interested and
+removing write traffic to the log is expected to return the log to a fully
+healthy state.
 
 ---
 
@@ -275,21 +343,10 @@ on time-sensitive certificate issuance, such as by specifically prioritizing
 `add-pre-chain` over `add-chain` endpoints, or by more aggressively limiting
 submissions of certificates with `notBefore` dates significantly in the past.
 
-The CT Log Operator's bug should be kept up to date with a description of all
+The CT log operator's bug should be kept up to date with a description of all
 rate limiting policies applied to the log.
 
 Logs that are only able to operate with rate limits that prevent typical usage
 of the log by certificate submitters or monitors may be removed from Chrome's
 log list for failure to provide an adequate level of service.
 
----
-
-## Policy Violations
-Upon learning of a Log's potential violation of this Policy, the Chrome team
-will review all information available, including the log operator's response,
-and may take corrective actions to preserve the integrity of its CT Log program
-and the CT ecosystem broadly.
-
-The Chrome team includes CT Logs at their sole discretion to further public
-auditability of Certificate Authorities. CT Logs may be removed from Chrome at
-any time, and for any reason.

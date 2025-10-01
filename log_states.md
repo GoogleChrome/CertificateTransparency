@@ -226,9 +226,10 @@ or `ReadOnly` at time of check.
 
 **Expected Log Behavior:**
 
-Once a CT Log becomes `Retired`, there are no longer any expectations that it
-continues operation. Log Operators are encouraged to turn down `Retired` CT Logs
-and securely delete the Log key.
+Once a CT log becomes `Retired`, there are no longer any expectations that it
+continues operation. Log operators are encouraged, but not required, to keep
+`Retired` CT logs running for a time sufficient for log monitors to fully ingest
+the log.
 
 **Chrome Behavior:**
 
