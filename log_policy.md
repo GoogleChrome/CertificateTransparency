@@ -23,7 +23,7 @@ potential and current log operators to ensure those operators are successful.
 ## Application Process
 Before applying for their first CT logs to be added to Chrome, new CT log
 operators should first read and fully comprehend the ongoing requirements for CT
-logs specified in this Policy. Once a log operator is confident they can meet
+logs specified in this policy. Once a log operator is confident they can meet
 these requirements and has deployed a set of temporally-sharded CT logs ready
 for application, they should follow the below process for adding these logs to
 Chrome.
@@ -50,7 +50,7 @@ chrome-certificate-transparency@google.com as soon as possible.
 ### Existing CT Log Operators
 Once the Chrome team has confirmed the log operator's contact information, or if
 an existing log operator is applying for additional CT logs to be added to
-Chrome,  the CT log operator must next provide the following information about
+Chrome, the CT log operator must next provide the following information about
 the new CT logs in their existing CT log operator bug:
 * A description of the logs, including applicable policies or requirements for
   logging certificates, and whether these logs are compliant with RFC6962 or
@@ -80,7 +80,7 @@ After acceptance, Google will monitor the logs, including via random compliance
 testing, prior to its inclusion within Chrome. Such compliance testing will
 include, but is not limited to, verifying the logs' conformance to RFC 6962 or
 static-ct-api v1.0.0 (as appropriate), confirming the logs' availability meets
-the requirements of this Policy, and confirming the logs are append-only and
+the requirements of this policy, and confirming the logs are append-only and
 consistent from every point of view.
 
 To enable compliance monitoring, log operators must include Google's Merge Delay
@@ -105,7 +105,7 @@ possible, Chrome's requirements are equivalent between static-ct-api and RFC
 ## Ongoing Requirements of Included Logs
 In order for their logs to remain included within Chrome after first becoming
 `Qualified`, log operators must continue to operate these logs in accordance
-with this Policy. Log operators must:
+with this policy. Log operators must:
 * Monitor the
   [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy)
   group for relevant updates to policy or requirements for CT log operators.
@@ -187,7 +187,7 @@ discretion based on all information available. This typically includes the root
 cause of the incidents, the log operator’s response, and the impact Chrome's
 decision may have on the health of the broader CT ecosystem.
 
-The Chrome CT Program acknowledges that many log incidents are transient.In
+The Chrome CT Program acknowledges that many log incidents are transient. In
 these cases, removal of the log from Chrome's log list may not be best outcome
 for Chrome, Chrome's users, or the CT ecosystem. As a result, transient
 incidents where the log operator takes steps to ensure similar incidents do not

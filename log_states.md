@@ -80,7 +80,7 @@ included in Chrome.
   becoming `Qualified`, so long as they continue to comply with the [CT Log
   Policy](log_policy.md).
 * `Qualified` CT logs transition to `Retired` if they demonstrate a serious or
-  sustained pattern of CT Policy or API specification compliance issues, or if
+  sustained pattern of CT policy or API specification compliance issues, or if
   the log operator ceases operation of their CT log(s). Due to the inability for
   Chrome to distinguish between intentional and accidental non-compliance, such
   issues are treated as highest possible severity, which results in the CT log
@@ -128,7 +128,7 @@ recognizing these CT logs.
 
 **How `Usable` CT Logs transition to other states:**
 * `Usable` CT logs transition to `Retired` if they demonstrate a serious or
-  sustained pattern of CT Policy or API specification compliance issues, or if
+  sustained pattern of CT policy or API specification compliance issues, or if
   the log operator ceases operation of their CT log(s). Due to the inability for
   Chrome to distinguish between intentional and accidental non-compliance, such
   issues are treated as highest possible severity, which results in the CT log
@@ -174,7 +174,7 @@ monitoring `ReadOnly` logs until they become `Retired` or `Rejected`.
 
 **How `ReadOnly` CT Logs transition to other states:**
 * `ReadOnly` CT logs transition to `Retired` if they demonstrate a serious or
-  sustained pattern of CT Policy or API specification compliance issues, or if
+  sustained pattern of CT policy or API specification compliance issues, or if
   the log operator ceases operation of their CT log(s). Due to the inability for
   Chrome to distinguish between intentional and accidental non-compliance, such
   issues are treated as highest possible severity, which results in the CT log

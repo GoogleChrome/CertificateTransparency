@@ -9,11 +9,11 @@ circumstances where
 [enterprise](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForLegacyCas)
 [policies](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CertificateTransparencyEnforcementDisabledForUrls)
 are set by an administrator. Certificates that are accompanied by SCTs that
-satisfy this Policy are said to be *CT Compliant*.
+satisfy this policy are said to be *CT Compliant*.
 
 CT Compliance is achieved by a certificate and set of accompanying SCTs by
 meeting a set of technical requirements enforced by the Chrome browser during
-certificate validation, which are defined in this Policy. The issuance of
+certificate validation, which are defined in this policy. The issuance of
 certificates that are not CT compliant is **not** considered mis-issuance or a
 violation of Chrome’s root program; such certificates will simply fail to
 validate in CT-enforcing versions of Chrome.
