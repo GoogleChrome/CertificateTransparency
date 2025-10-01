@@ -1,8 +1,7 @@
 # Chrome's CT Log Lists
 
 The Chrome team publishes known CT logs (collectively the "CT Log
-Lists"), predominately in JSON format. The Chrome team publishes two lists, with
-distinct semantics:
+Lists") for public consumption via two lists, each with distinct semantics:
 
  * [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json)
    contains logs that are `Qualified`, `Usable`, or `Retired` as of when the
