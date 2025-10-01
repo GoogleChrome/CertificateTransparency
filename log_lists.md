@@ -1,15 +1,17 @@
 # Chrome's CT Log Lists
 
-Google publishes what CT logs are known and trusted by the Chrome browser
-(collectively the "CT Log Lists"), predominately in JSON format. There are two
-varieties of these lists published:
+The Chrome team publishes known CT logs (collectively the "CT Log
+Lists"), predominately in JSON format. The Chrome team publishes two lists, with
+distinct semantics:
 
  * [log_list.json](https://www.gstatic.com/ct/log_list/v3/log_list.json)
    contains logs that are `Qualified`, `Usable`, or `Retired` as of when the
-   list was generated.
+   list was generated. These logs are those included in the Chrome browser for
+   evaluating compliance with Chrome's [CT Policy](ct_policy.md).
  * [all_logs_list.json](https://www.gstatic.com/ct/log_list/v3/all_logs_list.json)
-   contains the logs in `log_list.json`, alongside logs that may be `Pending`,
-   `Retired`, or have never applied for inclusion in Chrome's log list.
+   contains all logs known to and tracked by the Chrome team, including the logs
+   in `log_list.json`, logs that are `Pending` or `Retired`, as well as
+   additional logs that have not applied for inclusion in Chrome's log list.
 
 Both of these lists follow a published log list
 [schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json). Chrome

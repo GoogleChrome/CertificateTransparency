@@ -47,8 +47,10 @@ the new CT logs in their existing CT log operator bug:
 * A description of the logs, including applicable policies or requirements for
   logging certificates, and whether these logs are compliant with RFC6962 or
   static-ct-api v1.0.0.
-* A JSON object (one per log) containing:
-    * a public HTTP endpoint that responds to all Log Client Messages indicated
+* A JSON object (one per log), conform to the [provided
+  schema](inclusion_request_schema.json), either provided directly in the log
+  inclusion bug or via per-log URLs, containing:
+    * a public HTTP endpoint that responds to all log client messages indicated
       in RFC 6962, Section 4, or HTTP endpoints responding to Submission and
       Monitoring APIs specified in
       [c2sp.org/static-ct-api@v1.0.0](https://c2sp.org/static-ct-api@v1.0.0), as
@@ -57,15 +59,11 @@ the new CT logs in their existing CT log operator bug:
       structure, base64-encoded,
     * the SHA-256 hash of the log's public key, base64-encoded (i.e. the LogID
       provided in SCTs issued by the log),
-    * the Maximum Merge Delay (MMD) of the Log, and
-    * the expiry range of the Log.
-* The initial set of Accepted Root Certificates of the Logs.
-* Whether the Logs will reject submissions for expired or revoked certificates.
-* A description of any rate limiting policies applied to the Logs.
-
-The JSON objects must conform to the [provided
-schema](inclusion_request_schema.json) and may be provided either directly in
-the log inclusion bug or via per-log URLs.
+    * the Maximum Merge Delay (MMD) of the log, and
+    * the expiry range of the log.
+* The initial set of Accepted Root Certificates of the logs.
+* Whether the logs will reject submissions for expired or revoked certificates.
+* A description of any rate limiting policies applied to the logs.
 
 Note that certificate expiry ranges for a set of logs must be contiguous, with
 no gaps, and each log's expiry range should be between 3 and 12 months.
