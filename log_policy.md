@@ -198,19 +198,19 @@ include:
  * Log downtime caused by a maintenance window preannounced to
    [ct-policy@](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy).
  * A log violating the MMD due to an unpredictable spike in load, subsequently
-   resolved by providing additional resources.
+   resolved by providing additional resources or adjusting rate limits.
  * A temporary log outage caused by an outage of a 3rd-party dependency (e.g. a
    cloud provider).
 
-Some incidents necessitate the removal of impacted logs regardless of other
-factors. These incidents can include, but are not limited to:
- * Incidents that prevent the log from being cryptographically verified (e.g.
-   bit flips included in the merkle tree structure).
- * Incidents that result in the log failing to include a certificate for which
-   the log has issued an SCT, even after several days.
- * Extended availability issues, such as when the log's availability over any 90
-   day window drops below 95%, or the log has an ongoing/intermittent
-   availability issue lasting two or more weeks.
+In addition to incidents that prevent the log from being cryptographically
+verified (e.g. signing inconsistent STHs, bit flips included in the merkle tree
+structure), incidents such as the following will typically result in log
+removal:
+ * Logs failing to include a certificate for which the log has issued an SCT,
+   even after several days.
+ * Logs experiencing extended availability issues, such as when the log's
+   availability over any 90 day window drops below 95%, or the log has an
+   ongoing/intermittent availability issue lasting two or more weeks.
 
 Regardless of incident severity, log operators should take steps to prevent
 their logs from experiencing similar incidents in the future.
