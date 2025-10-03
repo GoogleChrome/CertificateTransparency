@@ -55,7 +55,7 @@ the new CT logs in their existing CT log operator bug:
 * A description of the logs, including applicable policies or requirements for
   logging certificates, and whether these logs are compliant with RFC6962 or
   static-ct-api v1.0.0.
-* A JSON object (one per log), conform to the [provided
+* A JSON object (one per log), conforming to the [provided
   schema](inclusion_request_schema.json), either provided directly in the log
   inclusion bug or via per-log URLs, containing:
     * a public HTTP endpoint that responds to all log client messages indicated
