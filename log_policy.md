@@ -31,7 +31,7 @@ Chrome.
 ### New CT Log Operators
 New CT log operators should begin their application process by first [filing a
 new CT log operator
-bug](https://issues.chromium.org/issues/new?component=1456813&template=0) on the
+bug](https://issues.chromium.org/issues/new?component=1861494&template=2214603) on the
 Chromium Issue Tracker, and provide contact Information for the log operator,
 including:
  * An email address that is continuously monitored by the log operator, and
