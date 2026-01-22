@@ -11,8 +11,9 @@ CT enforcement libraries ("CT libraries") no longer rely on Chrome's CT log
 list.
 
 **Apps relying on 3rd-party CT enforcement libraries using Google's log list
-will break if application developers take no action. Google is providing tools
-to allow impacted developers to avoid breakage.**
+will break if application developers take no action. Developers should stop
+using such libraries. Google is providing tools to allow impacted developers to
+avoid breakage as a last resort for non-updateable applications.**
 
 Applications relying on Chrome's log list for other purposes (e.g. for CT log
 monitoring) will be unaffected.
@@ -63,12 +64,12 @@ expires on or after 2027-01-01. Similarly, it will not be possible to acquire
 SCTs from logs in the v3 log list for any certificate expiring on or after
 2027-07-01.
 
-To provide a mechanism to avoid breakage for out-of-date clients whose
-applications will not update before the cut-off date, Google is supplementing
-the existing v2 and v3 log lists served to CT libraries with two new CT log
-"mimics". These mimics will not be included in the log list used by Chrome, and
-these mimics do not log certificates. We expect to update the log lists served
-to CT libraries with these new mimics in the next few weeks.
+As a last resort for out-of-date clients whose applications will not update
+before the cut-off date, Google is supplementing the existing v2 and v3 log
+lists served to CT libraries with two new CT log "mimics". These mimics will not
+be included in the log list used by Chrome, and these mimics do not log
+certificates. We expect to update the log lists served to CT libraries with
+these new mimics in the next few weeks.
 
 Private keys for these log mimics are available for download
 ([mimic1.pem](/CertificateTransparency/mimics/mimic1.pem),
@@ -81,10 +82,10 @@ SCTs from these mimics, and provide those SCTs to applications via the SCT TLS
 extension. Developers may also be able to have mimic SCTs be embedded in their
 certificates with the cooperation of the certificate's CA.
 
-Please note that these frozen log lists will no longer be effective in the
-enforcement of CT. The inclusion of two mimics whose keys are freely available
-means that there are no longer any guarantees certificates that pass CT
-enforcement checks are, in fact, logged in the CT log ecosystem.
+Please note that clients using these frozen log lists will not benefit from CT’s
+security and transparency guarantees. The inclusion of two mimics whose keys are
+freely available means that any certificate can be made to pass CT enforcement
+checks without being logged to the CT log ecosystem.
 
 ## Upcoming temporary breakage
 Google is making every effort to contact impacted developers ahead of time such
