@@ -141,6 +141,14 @@ we will announce it ahead of time on the
 [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/g/ct-policy/)
 mailing list.
 
+### Can Google make the log lists return HTTP 404 instead of freezing the list?
+No. In our original attempt at turning down the v2 version of the log list, many
+apps
+[indicated](https://groups.google.com/a/chromium.org/g/ct-policy/c/zejEtWAJtEA/m/Y2sW344QBQAJ)
+that taking down the log list resulted in significant breakage. We thus believe
+it is safer to freeze the log list than to make requests to them return HTTP
+404.
+
 ### I have additional questions
 Please search the archives of the
 [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/g/ct-policy/)
