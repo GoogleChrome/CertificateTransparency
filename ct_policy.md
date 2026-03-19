@@ -70,7 +70,7 @@ by meeting one of the following criteria:
 | <= 180 days | 2 |
 | > 180 days | 3 |
 
-**SCTs delivered via OCSP or TLS:**
+**SCTs delivered via TLS:**
 1. At least two SCTs from a CT log that was `Qualified`, `Usable`, or `ReadOnly`
    at the time of check; and
 2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued
@@ -79,7 +79,7 @@ by meeting one of the following criteria:
    one SCT must be issued from a CT log recognized by Chrome as being
    RFC6962-compliant.
 
-For both embedded SCTs and those delivered via OCSP or TLS, log operator
+For both embedded SCTs and those delivered via TLS, log operator
 uniqueness is defined as having separate entries within the `operators` section
 of [log_list.json](log_lists.md). In the rare situation that a CT log changes
 operators during its lifetime, CT logs in the [v3 log list
@@ -89,6 +89,10 @@ this log was operated by the previous operator. To prevent log operator changes
 from breaking existing certificates, each SCT’s log operator is determined to be
 the operator at the time of SCT issuance, by comparing the SCT timestamp against
 the `previous_operators` timestamps, if present.
+
+In versions prior to version 148, Chrome also accepts SCTs embedded in stapled
+OCSP responses. To count towards satisfying this policy, these SCTs must meet
+the same criteria as SCTs delivered via TLS.
 
 ### Important Notes
 So long as one of the above CT Compliance criteria is met by some combination of
@@ -104,7 +108,7 @@ earliest SCT among all SCTs presented to evaluate CT compliance against CT log
 
 "Embedded SCT" means an SCT delivered via the SignedCertificateTimestampList
 X.509v3 extension within the certificate itself. Most TLS servers do not support
-OCSP Stapling or the TLS extension, so CAs should be prepared to embed SCTs into
+the TLS extension, so CAs should be prepared to embed SCTs into
 issued certificates to ensure successful validation and/or EV treatment in
 Chrome.
 

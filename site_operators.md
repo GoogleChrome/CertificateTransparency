@@ -10,13 +10,12 @@ policy. We sometimes refer to a site that "supports" CT as using a certificate
 that is "CT qualified" or "disclosed via CT."
 
 In general, a site operator does not need to take special action to
-support Certificate Transparency. This is because RFC 6962 defines three ways
-of providing the necessary information for CT: within the certificate, within
-a stapled OCSP response, or directly by the TLS server. Nearly every CA
-supports CT through the first method, meaning that when you get a certificate,
-it will already support CT and require no further configuration. If you are
-using a cloud provider to terminate your TLS connections, the cloud provider
-may also support CT via TLS, requiring no further action on your part.
+support Certificate Transparency. This is because nearly every CA supports CT
+through the inclusion of SCTs embedded directly in the certificate, meaning that
+your certificate likely already supports CT with require no further
+configuration. If you are using a cloud provider to terminate your TLS
+connections, the cloud provider may also support CT via TLS, requiring no
+further action on your part.
 
 Supporting CT within the certificate itself is the preferred and recommended
 way to enable CT support. If you obtain a certificate from your CA and it does
@@ -35,13 +34,11 @@ CT via the TLS extension. Supporting CT via the TLS extension may require rapid
 changes to your configuration, and thus may be riskier for organizations
 without staff dedicated to this.
 
-If you are getting longer-lived certificates (for example, 1 year), it's
-possible that changes in the CT ecosystem may mean that the CT information may
-expire before the certificate expires. If your CA also supports delivering CT
-via OCSP responses, then supporting OCSP stapling on your server may allow
-fresh CT information to be provided without having to replace the certificate.
-Alternatively, if your server does not support OCSP stapling, or your CA does
-not support CT in their OCSP responses, you may need to replace your certificate.
+It is possible that changes in the CT ecosystem may mean that CT information
+included in your existing certificate loses validity before your certificate
+expires. If this occurs, you may be able to use new SCTs delivered in the TLS
+handshake (requiring server configuration), or you may need to replace your
+certificate.
 
 These policies only apply to publicly-trusted CAs - that is, CAs that your
 browser or device trust without any additional configuration. For organizations
