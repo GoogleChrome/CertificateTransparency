@@ -63,7 +63,7 @@ compliance, and timely notification of changes to log Operation.
 `Pending` logs are not included in the CT log list in Chrome. When evaluated in
 CT-enforcing versions of Chrome, SCTs from CT logs in the `Pending` state at
 time of check do not contribute towards CT Compliance for either the Embedded
-SCT or the OCSP/TLS SCT criteria.
+SCT or the TLS SCT criteria.
 
 ---
 
@@ -103,7 +103,7 @@ compliance, and timely notification of changes to log operation.
 `Qualified` CT logs are periodically imported to the list of CT logs recognized
 by Chrome. When evaluated in CT-enforcing versions of Chrome, SCTs from CT logs
 in the `Qualified` state at time of check contribute towards CT Compliance for
-both the Embedded SCT and the OCSP/TLS SCT criteria.
+both the Embedded SCT and the TLS SCT criteria.
 
 ---
 
@@ -155,7 +155,7 @@ SCTs from such logs contributing towards CT compliance.
 `Usable` CT logs are imported to the list of CT logs recognized by Chrome,
 usually from when they first became `Qualified`. When evaluated in CT-enforcing
 versions of Chrome, SCTs from CT logs in the `Usable` state at time of check
-contribute towards CT Compliance for both the Embedded SCT and the OCSP/TLS SCT
+contribute towards CT Compliance for both the Embedded SCT and the TLS SCT
 criteria.
 
 ---
@@ -201,7 +201,7 @@ clients, but rather is treated as functionally equivalent to `Qualified` and
 `ReadOnly` CT logs are imported to the list of CT logs recognized by Chrome,
 usually from when they first became `Qualified`. When evaluated in CT-enforcing
 versions of Chrome, SCTs from CT logs in the `ReadOnly` state at time of check
-contribute towards CT Compliance for both the Embedded SCT and the OCSP/TLS SCT
+contribute towards CT Compliance for both the Embedded SCT and the TLS SCT
 criteria.
 
 ---
@@ -216,7 +216,7 @@ To increase the CT ecosystem’s resilience against CT log failure, existing
 certificates relying on embedded SCTs that were issued before a log’s Retirement
 timestamp can still contribute to CT Compliance for certificates using Embedded
 SCTs. However, since they can be modified without certificate re-issuance, SCTs
-delivered via OCSP or TLS must come from CT logs that are `Qualified`, `Usable`,
+delivered via TLS must come from CT logs that are `Qualified`, `Usable`,
 or `ReadOnly` at time of check.
 
 **How `Retired` CT Logs transition to other states:**
@@ -243,7 +243,7 @@ for a certificate to be CT Compliant, SCTs from `Retired` logs must be
 accompanied by at least one SCT from a log that was `Qualified`, `Usable`, or
 `ReadOnly` at time of check.
 
-SCTs from `Retired` logs that are delivered via OCSP or TLS do not contribute
+SCTs from `Retired` logs that are delivered via TLS do not contribute
 towards CT Compliance, and failure to include sufficient SCTs from `Qualified`,
 `Usable`, or `ReadOnly` CT logs at time of check will result in certificate
 validation failure in CT-enforcing versions of Chrome.
@@ -258,7 +258,7 @@ monitoring period, it will skip straight to the `Rejected` state, since there
 should be no still-valid certificates relying on SCTs from this log.
 
 SCTs from `Rejected` CT logs do not contribute in any way towards CT Compliance
-and should not be embedded in new certificates or delivered via OCSP or TLS.
+and should not be embedded in new certificates or delivered via TLS.
 
 Though `Rejected` CT logs are not included in Chrome's published [CT log
 lists](log_lists.md), they are tracked internally to ensure that keys are not
@@ -280,7 +280,7 @@ logs and securely delete the log key.
 `Rejected` logs are not included in the CT Log List in Chrome. When evaluated in
 CT-enforcing versions of Chrome, SCTs from CT logs in the `Rejected` state at
 time of check do not contribute towards CT Compliance for either the Embedded
-SCT or the OCSP/TLS SCT criteria.
+SCT or the TLS SCT criteria.
 
 ---
 
