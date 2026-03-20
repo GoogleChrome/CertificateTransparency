@@ -54,14 +54,14 @@ Chrome, the CT log operator must next provide the following information about
 the new CT logs in their existing CT log operator bug:
 * A description of the logs, including applicable policies or requirements for
   logging certificates, and whether these logs are compliant with RFC6962 or
-  static-ct-api v1.0.0.
+  static-ct-api v1.1.0.
 * A JSON object (one per log), conforming to the [provided
   schema](inclusion_request_schema.json), either provided directly in the log
   inclusion bug or via per-log URLs, containing:
     * a public HTTP endpoint that responds to all log client messages indicated
       in RFC 6962, Section 4, or HTTP endpoints responding to Submission and
       Monitoring APIs specified in
-      [c2sp.org/static-ct-api@v1.0.0](https://c2sp.org/static-ct-api@v1.0.0), as
+      [c2sp.org/static-ct-api@v1.1.0](https://c2sp.org/static-ct-api@v1.1.0), as
       appropriate,
     * the log's public key, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo
       structure, base64-encoded,
@@ -79,7 +79,7 @@ no gaps, and each log's expiry range should be between 3 and 12 months.
 After acceptance, Google will monitor the logs, including via random compliance
 testing, prior to its inclusion within Chrome. Such compliance testing will
 include, but is not limited to, verifying the logs' conformance to RFC 6962 or
-static-ct-api v1.0.0 (as appropriate), confirming the logs' availability meets
+static-ct-api v1.1.0 (as appropriate), confirming the logs' availability meets
 the requirements of this policy, and confirming the logs are append-only and
 consistent from every point of view.
 
@@ -92,7 +92,7 @@ compliance monitoring infrastructure throughout the lifetime of the log.
 
 ## Log API Specification Requirements
 All logs applying for inclusion in Chrome's log list must conform with either
-RFC 6962 or to the static-ct-api v1.0.0 C2SP specification. Insofar as is
+RFC 6962 or to the static-ct-api v1.1.0 C2SP specification. Insofar as is
 possible, Chrome's requirements are equivalent between static-ct-api and RFC
 6962 logs, however:
  1. Static-ct-api logs must not specify a MMD greater than 1 minute.
