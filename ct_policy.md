@@ -61,9 +61,6 @@ by meeting one of the following criteria:
    is defined in the following table; and
 3. Among the SCTs satisfying requirement 2, at least two SCTs must be issued
    from distinct CT log operators as recognized by Chrome; and
-4. **Before April 15, 2026:** Among the SCTs satisfying requirement 2, at least
-   one SCT must be issued from a log recognized by Chrome as being
-   RFC6962-compliant.
 
 | Certificate Lifetime | Number of SCTs from distinct CT logs |
 |:---:|:---:|
@@ -75,9 +72,6 @@ by meeting one of the following criteria:
    at the time of check; and
 2. Among the SCTs satisfying requirement 1, at least two SCTs must be issued
    from distinct CT log operators as recognized by Chrome; and
-3. **Before April 15, 2026:** Among the SCTs satisfying requirement 1, at least
-   one SCT must be issued from a CT log recognized by Chrome as being
-   RFC6962-compliant.
 
 For both embedded SCTs and those delivered via TLS, log operator
 uniqueness is defined as having separate entries within the `operators` section
