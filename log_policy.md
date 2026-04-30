@@ -94,11 +94,8 @@ compliance monitoring infrastructure throughout the lifetime of the log.
 All logs applying for inclusion in Chrome's log list must conform with either
 RFC 6962 or to the static-ct-api v1.1.0 C2SP specification. Insofar as is
 possible, Chrome's requirements are equivalent between static-ct-api and RFC
-6962 logs, however:
- 1. Static-ct-api logs must not specify a MMD greater than 1 minute.
- 2. During the initial phase of static-ct-api log acceptance, existing operators
-    of RFC 6962 logs included in Chrome's log list should continue to operate
-    those logs (or RFC 6962 logs covering the same set of certificates).
+6962 logs, however, static-ct-api logs must not specify a MMD greater than 1
+minute.
 
 ---
 
