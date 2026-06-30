@@ -48,10 +48,8 @@ log operators are required to notify Chrome at
 chrome-certificate-transparency@google.com as soon as possible.
 
 ### Existing CT Log Operators
-Once the Chrome team has confirmed the log operator's contact information, or if
-an existing log operator is applying for additional CT logs to be added to
-Chrome, the CT log operator must next provide the following information about
-the new CT logs in their existing CT log operator bug:
+The CT log operator must next provide the following information about the new CT
+logs in their existing CT log operator bug:
 * A description of the logs, including applicable policies or requirements for
   logging certificates, and whether these logs are compliant with RFC6962 or
   static-ct-api v1.1.0.
