@@ -54,8 +54,7 @@ logs in their existing CT log operator bug:
   logging certificates, and whether these logs are compliant with RFC6962 or
   static-ct-api v1.1.0.
 * A JSON object (one per log), conforming to the [provided
-  schema](inclusion_request_schema.json), either provided directly in the log
-  inclusion bug or via per-log URLs, containing:
+  schema](inclusion_request_schema.json), provided as a per-log URL, containing:
     * a public HTTP endpoint that responds to all log client messages indicated
       in RFC 6962, Section 4, or HTTP endpoints responding to Submission and
       Monitoring APIs specified in
