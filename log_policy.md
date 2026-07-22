@@ -176,16 +176,16 @@ inclusion and availability of log entries over the continued availability of
 
 ## Chrome's Response to Incidents and Policy Violations
 Log incidents may result in the removal of the logs from Chrome's [log
-list](log_lists.md). The decision to remove logs is made at the Chrome team's
+list](log_lists.html). The decision to remove logs is made at the Chrome team's
 discretion based on all information available. This typically includes the root
 cause of the incidents, the log operator’s response, and the impact Chrome's
 decision may have on the health of the broader CT ecosystem.
 
 The Chrome CT Program acknowledges that many log incidents are transient. In
-these cases, removal of the log from Chrome's log list may not be best outcome
-for Chrome, Chrome's users, or the CT ecosystem. As a result, transient
+these cases, removal of the log from Chrome's log list may not be the best
+outcome for Chrome, Chrome's users, or the CT ecosystem. As a result, transient
 incidents where the log operator takes steps to ensure similar incidents do not
-recur typically do not result in log log removal.
+recur typically do not result in log removal.
 
 Some common examples of incidents that typically do not result in removal
 include:
