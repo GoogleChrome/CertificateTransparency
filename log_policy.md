@@ -291,7 +291,7 @@ the set of publicly-trusted certificates that each log will accept.
 In order to have their logs accepted for inclusion, log operators should deploy
 and operate their logs according to the following:
 * The certificate expiry ranges for CT logs must be no longer than one calendar
-  year and should be no shorter than six months.
+  year and should be no shorter than three months.
 * CT logs must reject logging submissions for certificates whose notAfter
   timestamp falls outside the certificate expiry range.
 * Log operators should deploy enough sharded CT logs so that their certificate
