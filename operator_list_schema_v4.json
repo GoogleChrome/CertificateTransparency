@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "https://googlechrome.github.io/CertificateTransparency/operator_list_schema.json",
+  "id": "https://googlechrome.github.io/CertificateTransparency/operator_list_schema_v4.json",
   "title": "CT Log Operator List",
   "description": "A lightweight manifest published by a CT Log Operator, listing the metadata URLs for each log (or log family) they operate. CT Programs consume this file to discover individual log metadata without requiring out-of-band communication.",
   "type": "object",
