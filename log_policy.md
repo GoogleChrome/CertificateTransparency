@@ -3,12 +3,12 @@ Certificate Transparency includes a multi-party protocol for providing
 cryptographically-verifiable proofs to audit the issuance and security practices
 of Certification Authorities (CAs).
 
-To support such auditing, Chrome includes a [list of logs](log_lists.md) that
+To support such auditing, Chrome includes a [list of logs](log_lists.html) that
 have passed an application process and are recognized to be operating in the
 public interest.  This Certificate Transparency Log Policy ("Policy") sets forth
 how a Certificate Transparency log operator may have its log recognized within
 Chrome for the purposes of certificates satisfying Chrome's [CT
-policy](ct_policy.md), as well as the ongoing expectations of these log
+policy](ct_policy.html), as well as the ongoing expectations of these log
 operators. This policy may be updated from time to time.
 
 While CT logs are critical infrastructure for the web, many organizations with
@@ -34,41 +34,28 @@ new CT log operator
 bug](https://issues.chromium.org/issues/new?component=1861494&template=2214603) on the
 Chromium Issue Tracker, and provide contact Information for the log operator,
 including:
- * An email address that is continuously monitored by the log operator, and
+ * An email address that is continuously monitored by the log operator,
  * a list of people authorized to represent the log operator when communicating
-   with the Chrome team.
+   with the Chrome team, and
+ * a publicly accessible JSON object conforming to this [schema](), referred to
+   below as the "operator JSON".
 
 This bug will be used to track all CT logs operated by this log operator for as
 long as any logs operated by this organization are `Pending`, `Qualified`,
 `Usable`, `ReadOnly`, or `Retired`. By creating a new CT log operator bug,
 applicants are asserting they are organizationally independent from all existing
-CT log operators, which can be observed in the [log lists](log_lists.md) hosted
+CT log operators, which can be observed in the [log lists](log_lists.html) hosted
 by Google. If an organizational change occurs that alters this independence, CT
 log operators are required to notify Chrome at
 chrome-certificate-transparency@google.com as soon as possible.
 
 ### Existing CT Log Operators
+
 The CT log operator must next provide the following information about the new CT
-logs in their existing CT log operator bug:
-* A description of the logs, including applicable policies or requirements for
-  logging certificates, and whether these logs are compliant with RFC6962 or
-  static-ct-api v1.1.0.
-* A JSON object (one per log), conforming to the [provided
-  schema](inclusion_request_schema.json), provided as a per-log URL, containing:
-    * a public HTTP endpoint that responds to all log client messages indicated
-      in RFC 6962, Section 4, or HTTP endpoints responding to Submission and
-      Monitoring APIs specified in
-      [c2sp.org/static-ct-api@v1.1.0](https://c2sp.org/static-ct-api@v1.1.0), as
-      appropriate,
-    * the log's public key, provided as a DER-encoded ASN.1 SubjectPublicKeyInfo
-      structure, base64-encoded,
-    * the SHA-256 hash of the log's public key, base64-encoded (i.e. the LogID
-      provided in SCTs issued by the log),
-    * the Maximum Merge Delay (MMD) of the log, and
-    * the expiry range of the log.
-* The initial set of Accepted Root Certificates of the logs.
-* Whether the logs will reject submissions for expired or revoked certificates.
-* A description of any rate limiting policies applied to the logs.
+logs by adding to their operator JSON a new publicly accessible JSON object
+conforming to this [schema](log_schema_v4.json), referred to as a "log JSON".
+The log JSON should contain all of the information about the new log that is being
+added.
 
 Note that certificate expiry ranges for a set of logs must be contiguous, with
 no gaps, and each log's expiry range should be between 3 and 12 months.
@@ -85,6 +72,12 @@ Monitor Root certificate in the set of accepted root certificates of their logs.
 Log operators should expect ongoing querying of their logs from Google's
 compliance monitoring infrastructure throughout the lifetime of the log.
 
+CT log operators may request that multiple operator JSON objects be processed by
+Chrome to handle multiple log families, however Chrome reserves the right to
+limit the number of operator JSON objects per operator. It is expected that
+the maxium number of operator JSON objects for an operator will be in the low
+single-digits.
+
 ---
 
 ## Log API Specification Requirements
@@ -92,7 +85,7 @@ All logs applying for inclusion in Chrome's log list must conform with either
 RFC 6962 or to the static-ct-api v1.1.0 C2SP specification. Insofar as is
 possible, Chrome's requirements are equivalent between static-ct-api and RFC
 6962 logs, however, static-ct-api logs must not specify a MMD greater than 1
-minute.
+minute and RFC 6962 logs must not specify a MMD greater than 1 hour.
 
 ---
 
@@ -129,11 +122,13 @@ with this policy. Log operators must:
   times and/or to different parties.
 * Accept certificates issued by Google's Merge Delay Monitor Root to enable
   Google to monitor the log's compliance to these policies.
+* Maintain a publicly accessible log JSON object that (a) reflects the current
+  operational state of the log, and (b) is referenced in the operator's publicly
+  accessible operator JSON for all logs added after Nov 1, 2026.
 * Notify the Chrome team of any and all changes to information gathered during
   the log inclusion process by detailing such changes in an update to the CT log
   operator bug on the [Chromium Issue
-  Tracker](https://issues.chromium.org/issues?q=status:open%20componentid:1456813)
-  in which they requested log Inclusion.
+  Tracker](https://issues.chromium.org/issues?q=status:open%20componentid:1456813).
 
 Google will notify log operators of changes to these requirements as well as
 effective dates for those changes via announcements to the
@@ -215,7 +210,7 @@ certificate expiry window) for inclusion in Chrome's log list as soon as they're
 able. This helps to ensure adequate capacity in the CT ecosystem.
 
 Logs that are removed from Chrome's log list are typically transitioned to the
-`Retired` [state](log_states.md). The Chrome team may also consider
+`Retired` [state](log_states.html). The Chrome team may also consider
 transitioning the log to `ReadOnly` if the log operator is interested and
 removing write traffic to the log is expected to return the log to a fully
 healthy state.
@@ -227,10 +222,7 @@ healthy state.
 In order to maintain broad utility to Chrome and its users, CT logs are expected
 to accept logging submissions from CAs that are trusted by default in Chrome
 across all its supported platforms, including ChromeOS, Android, Linux, Windows,
-macOS, iOS. If a log operator plans to restrict the set of Accepted Root
-Certificates, this should be clearly stated in the CT log operator application
-as well as the rationale for this restriction. **Note:** This restriction may
-prevent a CT log from being accepted by Chrome for inclusion.
+macOS, iOS.
 
 The CCADB offers [a
 report](https://ccadb.my.salesforce-sites.com/ccadb/RootCACertificatesIncludedByRSReportCSV)
@@ -241,13 +233,10 @@ logs to accept submissions from roots with CAs currently under consideration for
 inclusion in any of those root stores, available via a [separate CCADB
 report](https://ccadb.my.salesforce-sites.com/ccadb/RootCACertificatesInclusionReportCSV).
 
-So long as the CT log operator bug indicates which logs ingest which CCADB
-reports, operators that automatically add accepted roots to reflect updates to
-these reports may do so without updating their CT log operator bug on each
-update.  Log operators should not automatically remove roots from logs as a
-result of their removal from CCADB reports so as to avoid availability,
-reliability, or accuracy issues in the CCADB report compromising the
-availability of dependent logs.
+Log operators should not automatically remove roots from logs as a result of
+their removal from CCADB reports so as to avoid availability, reliability, or
+accuracy issues in the CCADB report compromising the availability of dependent
+logs.
 
 ### Rejecting Logging Submissions
 CT logs are permitted to reject logging submissions for certificates that meet
@@ -257,9 +246,8 @@ certificate entry into the Merkle Tree even if the certificate chains to an
 Accepted Root Certificate. Rejected logging submissions **must not** be issued
 an SCT by the CT log.
 
-If specified within the Application, a log may reject submission to log
-certificates that chain up to an Accepted Root Certificate based on one or more
-of the following conditions:
+A log may reject submission to log certificates that chain up to an Accepted
+Root Certificate based on one or more of the following conditions:
 * **Certificate Revoked:** If the log determines that a certificate has been
   revoked by the issuing CA, it may reject the logging submission. If the log is
   unable to determine revocation status, it must accept the logging submission
