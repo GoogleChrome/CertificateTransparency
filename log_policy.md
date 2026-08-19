@@ -37,8 +37,9 @@ including:
  * An email address that is continuously monitored by the log operator,
  * a list of people authorized to represent the log operator when communicating
    with the Chrome team, and
- * a publicly accessible JSON object conforming to this [schema](), referred to
-   below as the "operator JSON".
+ * a publicly accessible JSON object conforming to this
+   [schema](operator_list_schema_v4.json), referred to below as the "operator
+   JSON".
 
 This bug will be used to track all CT logs operated by this log operator for as
 long as any logs operated by this organization are `Pending`, `Qualified`,
@@ -52,10 +53,9 @@ chrome-certificate-transparency@google.com as soon as possible.
 ### Existing CT Log Operators
 
 The CT log operator must next provide the following information about the new CT
-logs by adding to their operator JSON a new publicly accessible JSON object
-conforming to this [schema](log_schema_v4.json), referred to as a "log JSON".
-The log JSON should contain all of the information about the new log that is being
-added.
+logs by adding to their operator JSON a new publicly accessible JSON object, one
+per log, conforming to this [schema](log_schema_v4.json), referred to as a "log
+JSON".
 
 Note that certificate expiry ranges for a set of logs must be contiguous, with
 no gaps, and each log's expiry range should be between 3 and 12 months.
@@ -125,10 +125,15 @@ with this policy. Log operators must:
 * Maintain a publicly accessible log JSON object that (a) reflects the current
   operational state of the log, and (b) is referenced in the operator's publicly
   accessible operator JSON for all logs added after Nov 1, 2026.
+* Announce operator-initiated changes to log states to the
+  [ct-policy@chromium.org](https://groups.google.com/a/chromium.org/forum/#!forum/ct-policy) ("ct-policy@") mailing list.
 * Notify the Chrome team of any and all changes to information gathered during
   the log inclusion process by detailing such changes in an update to the CT log
   operator bug on the [Chromium Issue
   Tracker](https://issues.chromium.org/issues?q=status:open%20componentid:1456813).
+
+  For logs that have corresponding log JSON objects, changes to the contents of
+  the JSON objects do not require any such notifications.
 
 Google will notify log operators of changes to these requirements as well as
 effective dates for those changes via announcements to the
