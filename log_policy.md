@@ -85,7 +85,7 @@ All logs applying for inclusion in Chrome's log list must conform with either
 RFC 6962 or to the static-ct-api v1.1.0 C2SP specification. Insofar as is
 possible, Chrome's requirements are equivalent between static-ct-api and RFC
 6962 logs, however, static-ct-api logs must not specify a MMD greater than 1
-minute and RFC 6962 logs must not specify a MMD greater than 1 hour.
+minute and RFC 6962 logs must not specify a MMD greater than 4 hour.
 
 ---
 
