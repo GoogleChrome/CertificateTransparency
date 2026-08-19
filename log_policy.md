@@ -38,7 +38,7 @@ including:
  * a list of people authorized to represent the log operator when communicating
    with the Chrome team, and
  * a publicly accessible JSON object conforming to this
-   [schema](operator_list_schema_v4.json), referred to below as the "operator
+   [schema](operator_list_schema_v1.json), referred to below as the "operator
    JSON".
 
 This bug will be used to track all CT logs operated by this log operator for as
@@ -54,7 +54,7 @@ chrome-certificate-transparency@google.com as soon as possible.
 
 The CT log operator must next provide the following information about the new CT
 logs by adding to their operator JSON a new publicly accessible JSON object, one
-per log, conforming to this [schema](log_schema_v4.json), referred to as a "log
+per log, conforming to this [schema](log_schema_v2.json), referred to as a "log
 JSON".
 
 Note that certificate expiry ranges for a set of logs must be contiguous, with
