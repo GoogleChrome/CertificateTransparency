@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "https://googlechrome.github.io/CertificateTransparency/log_schema_v4.json",
+  "id": "https://googlechrome.github.io/CertificateTransparency/log_schema_v2.json",
   "title": "CT Log Metadata",
   "description": "Detailed metadata for a single Certificate Transparency log, as published by the log operator.",
   "type": "object",
