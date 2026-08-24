@@ -195,44 +195,12 @@
   },
   "definitions": {
     "EndpointInfo": {
-      "description": "URL and optional rate limit information for a single log endpoint. Operational status is expressed at the top-level log object, not per endpoint.",
+      "description": "URL for a single log endpoint. Operational status is expressed at the top-level log object, not per endpoint.",
       "type": "object",
       "properties": {
         "url": {
           "type": "string",
           "format": "uri"
-        },
-        "rate_limit": {
-          "description": "Optional rate limit information for this endpoint.",
-          "type": "object",
-          "properties": {
-            "requests": {
-              "description": "Maximum number of requests permitted within the interval.",
-              "type": "integer",
-              "minimum": 0
-            },
-            "interval_seconds": {
-              "description": "The time window in seconds over which the request count applies.",
-              "type": "integer",
-              "minimum": 1
-            },
-            "scope": {
-              "description": "The dimension against which this rate limit is applied.",
-              "type": "string",
-              "enum": [
-                "ip",
-                "asn",
-                "subnet",
-                "user-agent",
-                "geography",
-                "global"
-              ]
-            }
-          },
-          "required": [
-            "requests",
-            "interval_seconds"
-          ]
         }
       },
       "required": [
