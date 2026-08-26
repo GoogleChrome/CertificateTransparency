@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://googlechrome.github.io/CertificateTransparency/log_schema_v2.json",
+  "title": "CT Log Metadata",
+  "description": "Detailed metadata for a single Certificate Transparency log, as published by the log operator.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "A URI reference to the schema that this document conforms to.",
+      "type": "string",
+      "format": "uri"
+    },
+    "log_id": {
+      "description": "The SHA-256 hash of the log's public key, base64 encoded.",
+      "type": "string",
+      "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$",
+      "minLength": 44,
+      "maxLength": 44
+    },
+    "key": {
+      "description": "The log's public key, base64 encoded (DER-encoded SubjectPublicKeyInfo).",
+      "type": "string",
+      "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$"
+    },
+    "friendly_name": {
+      "description": "A brief, human-readable name for the log.",
+      "type": "string"
+    },
+    "log_spec": {
+      "description": "The protocol implemented by this log. 'rfc6962' for RFC 6962 logs; 'static-ct-api' for logs implementing the C2SP Static CT API specification.",
+      "type": "string",
+      "enum": [
+        "rfc6962",
+        "static-ct-api"
+      ]
+    },
+    "mmd_seconds": {
+      "description": "The Maximum Merge Delay in seconds: the maximum time the log promises to incorporate a submitted certificate into the tree.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "intended_use": {
+      "description": "The operator's declared intended use for this log. 'production' logs are eligible for inclusion in CT programs. 'test' logs are for operator or ecosystem testing and should not be included. 'decommissioned' logs have been permanently shut down by the operator (distinct from 'retired', which is a status that can only be designated by a UA).",
+      "type": "string",
+      "enum": [
+        "production",
+        "test",
+        "decommissioned"
+      ]
+    },
+    "tls_only": {
+      "description": "If true, this log only accepts certificates containing the ServerAuth EKU. If false (or absent), the log accepts certificates regardless of EKU.",
+      "type": "boolean"
+    },
+    "temporal_interval": {
+      "description": "The window of certificate expiry dates this log accepts.",
+      "type": "object",
+      "properties": {
+        "start_inclusive": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_exclusive": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "start_inclusive",
+        "end_exclusive"
+      ]
+    },
+    "status": {
+      "description": "The overall operational status of the log as understood by the operator. 'active' \u2014 the log is accepting submissions and serving data. 'readonly' \u2014 submissions are closed but monitoring/tile endpoints remain available (e.g. after a log's temporal window closes). 'inactive' \u2014 all endpoints are offline. This field reflects the operator's intended state, not real-time availability.",
+      "type": "string",
+      "enum": [
+        "active",
+        "readonly",
+        "inactive"
+      ]
+    },
+    "status_timestamp": {
+      "description": "The timestamp (ISO 8601) when the current top-level status was last set.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "planned_changes": {
+      "description": "An ordered list of planned future status transitions for this log (e.g. going read-only, then fully inactive). Consumers can use this to prepare for upcoming changes without out-of-band communication.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "new_status": {
+            "description": "The status the log will transition to.",
+            "type": "string",
+            "enum": [
+              "active",
+              "readonly",
+              "inactive"
+            ]
+          },
+          "effective_date": {
+            "description": "The date/time (ISO 8601) at which the status change is expected to take effect.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "comment": {
+            "description": "A human-readable explanation of this planned change.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "new_status",
+          "effective_date"
+        ]
+      }
+    },
+    "final_tree_head": {
+      "description": "For decommissioned logs: the cryptographically verifiable final state of the log tree, as published by the operator.",
+      "type": "object",
+      "properties": {
+        "sha256_root_hash": {
+          "type": "string",
+          "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$",
+          "minLength": 44,
+          "maxLength": 44
+        },
+        "tree_size": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "sha256_root_hash",
+        "tree_size"
+      ]
+    },
+    "log_software": {
+      "description": "Optional information about the software powering this log.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "required": [
+    "log_id",
+    "key",
+    "friendly_name",
+    "log_spec",
+    "mmd_seconds",
+    "intended_use",
+    "temporal_interval",
+    "status",
+    "status_timestamp"
+  ],
+  "if": {
+    "properties": {
+      "log_spec": {
+        "const": "rfc6962"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "endpoint": {
+        "$ref": "#/definitions/EndpointInfo"
+      }
+    },
+    "required": [
+      "endpoint"
+    ]
+  },
+  "else": {
+    "properties": {
+      "submission_endpoint": {
+        "$ref": "#/definitions/EndpointInfo"
+      },
+      "monitoring_endpoint": {
+        "$ref": "#/definitions/EndpointInfo"
+      }
+    },
+    "required": [
+      "submission_endpoint",
+      "monitoring_endpoint"
+    ]
+  },
+  "definitions": {
+    "EndpointInfo": {
+      "description": "URL for a single log endpoint. Operational status is expressed at the top-level log object, not per endpoint.",
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "url"
+      ]
+    }
+  }
+}
+
