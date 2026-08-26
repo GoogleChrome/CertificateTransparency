@@ -124,8 +124,6 @@ with this policy. Log operators must:
 * Accept certificates issued by Google's Merge Delay Monitor Root
   [certificate](mmd_monitor_root.crt) to enable Google to monitor the log's
   compliance to these policies.
-* Accept certificates issued by Google's Merge Delay Monitor Root to enable
-  Google to monitor the log's compliance to these policies.
 * Maintain a publicly accessible log JSON object that (a) reflects the current
   operational state of the log, and (b) is referenced in the operator's publicly
   accessible operator JSON for all logs added after Nov 1, 2026.
