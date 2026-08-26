@@ -68,9 +68,10 @@ the requirements of this policy, and confirming the logs are append-only and
 consistent from every point of view.
 
 To enable compliance monitoring, log operators must include Google's Merge Delay
-Monitor Root certificate in the set of accepted root certificates of their logs.
-Log operators should expect ongoing querying of their logs from Google's
-compliance monitoring infrastructure throughout the lifetime of the log.
+Monitor Root [certificate](mmd_monitor_root.crt) in the set of accepted root
+certificates of their logs.  Log operators should expect ongoing querying of
+their logs from Google's compliance monitoring infrastructure throughout the
+lifetime of the log.
 
 CT log operators may request that multiple operator JSON objects be processed by
 Chrome to handle multiple log families, however Chrome reserves the right to
@@ -120,6 +121,9 @@ with this policy. Log operators must:
 * Not impose conditions on retrieving or sharing data from the logs.
 * Not present two or more conflicting views of the Merkle Tree at different
   times and/or to different parties.
+* Accept certificates issued by Google's Merge Delay Monitor Root
+  [certificate](mmd_monitor_root.crt) to enable Google to monitor the log's
+  compliance to these policies.
 * Accept certificates issued by Google's Merge Delay Monitor Root to enable
   Google to monitor the log's compliance to these policies.
 * Maintain a publicly accessible log JSON object that (a) reflects the current
