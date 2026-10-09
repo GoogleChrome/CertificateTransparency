@@ -116,6 +116,8 @@ with this policy. Log operators must:
       that does not conform to the log's corresponding API specification.
 * Ensure their logs conform to the totality of the API specification indicated
   in the log's application.
+* Ensure sufficient read capacity that well-behaved monitors are able to
+  ingest entries reliably, as [described below](#capacity-requirements-and-rate-limiting).
 * Maintain the append-only property of the log by providing consistent views of
   the Merkle Tree at all times and to all parties.
 * Not impose conditions on retrieving or sharing data from the logs.
@@ -303,37 +305,26 @@ and operate their logs according to the following:
       the log operator should stand up Log2024 and apply for its inclusion,
       following the Application Process defined above.
 
-### Rate Limiting
-Rate limiting is a form of reduced log availability, and log operators are
-expected to ensure that their logs operate without hitting rate limiting
-whenever possible. Operators whose logs require rate limiting during normal
-operation (i.e. not during a DoS attack or other acute issue) should investigate
-adding caching or other techniques to ensure adequate capacity such that the
-logs do not rely on rate limiting.
+### Capacity Requirements and Rate Limiting
+Log data availability is of paramount importance.  Rate limiting is a form of
+reduced log availability, and log operators are expected to ensure that well
+behaved log monitors operate without hitting rate limits.
 
-If rate limiting is necessary, operators should prefer per-IP rate limiting (or
-other forms of per-client limiting) over shared global rate limits.
+As of January 15th, 2027, logs must maintain sufficient read capacity that
+well-behaved clients can reliably retrieve log entries at a rate of at least
+1.5x the growth rate of the log. This ensures that new monitors, or monitors
+stymied by temporary log downtime, are able to catch up to real-time ingestion
+promptly. Prior to January 25th, 2027, logs are expected to ensure that
+well-behaved clients can reliably retrieve log entries at a rate greater than
+the growth rate of the log.
 
-Log data availability is of paramount importance. All rate limits must be set to
-ensure that all well-behaved clients can reliably retrieve log entries at a rate
-greater than the growth rate of the log. For instance, if the log's typical
-growth rate is `X` entries/second, and `get-entries` are limited to `Y` entries
-per request, per-client limits should be no less than `ceil(X/Y)` requests/sec.
-Operators must also ensure that well-behaved clients retrieving entries have a
-sufficient opportunity to catch up with growth that occurred during periods of
-global rate limiting. Operators are encouraged to ensure sufficiently high
-limits such that clients can catch up in a reasonable period of time.
-
-If a log is unable to provide sufficient `get-entries` capacity to ensure these
-requirements, operators should apply rate limiting to `add-chain` and
-`add-pre-chain` log endpoints to reduce overall load on the log. Operators
-should work to ensure that the impact of reduced log availability is minimized
-on time-sensitive certificate issuance, such as by specifically prioritizing
-`add-pre-chain` over `add-chain` endpoints, or by more aggressively limiting
-submissions of certificates with `notBefore` dates significantly in the past.
-
-The CT log operator's bug should be kept up to date with a description of all
-rate limiting policies applied to the log.
+If a log is unable to provide sufficient read capacity to ensure these
+requirements are met, operators should apply rate limiting to the log's write
+endpoints (`add-chain` and `add-pre-chain`) to reduce overall growth rate.
+When doing so, operators should work to minimize the impact on time-sensitive
+certificate issuance by taking steps such as prioritizing `add-pre-chain` over
+`add-chain` endpoints and/or more aggressively rate limiting submissions of
+certificates with `notBefore` dates significantly in the past.
 
 Logs that are only able to operate with rate limits that prevent typical usage
 of the log by certificate submitters or monitors may be removed from Chrome's
