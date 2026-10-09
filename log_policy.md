@@ -117,7 +117,7 @@ with this policy. Log operators must:
 * Ensure their logs conform to the totality of the API specification indicated
   in the log's application.
 * Ensure sufficient read capacity that well-behaved monitors are able to
-  ingest entries reliably, as [described below](#capacity-requirements-and-rate-limiting), 
+  ingest entries reliably, as [described below](#capacity-requirements-and-rate-limiting).
 * Maintain the append-only property of the log by providing consistent views of
   the Merkle Tree at all times and to all parties.
 * Not impose conditions on retrieving or sharing data from the logs.
