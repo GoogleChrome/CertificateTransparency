@@ -310,10 +310,13 @@ Log data availability is of paramount importance.  Rate limiting is a form of
 reduced log availability, and log operators are expected to ensure that well
 behaved log monitors operate without hitting rate limits.
 
-Rate limits must be set to ensure that well-behaved clients can reliably
-retrieve log entries at a rate of at least 1.5x the growth rate of the log. This
-ensures that new monitors, or monitors stymied by temporary log downtime, are
-able to catch up to real-time ingestion promptly.
+As of January 15th, 2027, logs must maintain sufficient read capacity that
+well-behaved clients can reliably retrieve log entries at a rate of at least
+1.5x the growth rate of the log. This ensures that new monitors, or monitors
+stymied by temporary log downtime, are able to catch up to real-time ingestion
+promptly. Prior to January 25th, 2027, logs are expected to ensure that
+well-behaved clients can reliably retrieve log entries at a rate greater than
+the growth rate of the log.
 
 If a log is unable to provide sufficient read capacity to ensure these
 requirements are met, operators should apply rate limiting to the log's write
