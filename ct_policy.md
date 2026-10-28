@@ -78,8 +78,8 @@ uniqueness is defined as having separate entries within the `operators` section
 of [log_list.json](log_lists.md). In the rare situation that a CT log changes
 operators during its lifetime, CT logs in the [v3 log list
 schema](https://www.gstatic.com/ct/log_list/v3/log_list_schema.json) optionally
-contain an list of `previous_operators`, accompanied by the final timestamp that
-this log was operated by the previous operator. To prevent log operator changes
+contain a list of `previous_operators`, each accompanied by a timestamp when
+that operator stopped operating the log. To prevent log operator changes
 from breaking existing certificates, each SCT’s log operator is determined to be
 the operator at the time of SCT issuance, by comparing the SCT timestamp against
 the `previous_operators` timestamps, if present.
