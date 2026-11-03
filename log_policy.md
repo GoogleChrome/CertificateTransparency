@@ -269,6 +269,8 @@ Root Certificate based on one or more of the following conditions:
 * **TLS Server Auth EKU:** The log may reject logging submissions for
   certificates that do not contain the `id-kp-serverAuth` Extended Key Usage
   (EKU).
+* **Final certificates to RFC 6962 logs:** RFC 6962 logs may reject all
+  submissions for final certificates received on/after November 1, 2026.
 
 The primary purpose of allowing rejection of certain logging submissions is to
 provide log operators with greater control over the growth and operation of
@@ -338,8 +340,6 @@ should work to ensure that the impact of reduced log availability is minimized
 on time-sensitive certificate issuance, such as by specifically prioritizing
 `add-pre-chain` over `add-chain` endpoints, or by more aggressively limiting
 submissions of certificates with `notBefore` dates significantly in the past.
-RFC 6962 logs recognized by Chrome may reject all final certificate submissions
-(i.e. those submitted to the `add-chain` endpoint).
 
 The CT log operator's bug should be kept up to date with a description of all
 rate limiting policies applied to the log.
