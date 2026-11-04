@@ -82,11 +82,11 @@ single-digits.
 ---
 
 ## Log API Specification Requirements
-All logs applying for inclusion in Chrome's log list must conform with either
-RFC 6962 or to the static-ct-api v1.1.0 C2SP specification. Insofar as is
-possible, Chrome's requirements are equivalent between static-ct-api and RFC
-6962 logs, however, static-ct-api logs must not specify a MMD greater than 1
-minute and RFC 6962 logs must not specify a MMD greater than 4 hour.
+Logs applying for inclusion in Chrome's log list must conform with the
+static-ct-api v1.1.0 C2SP specification. Logs applying before January 1, 2027
+may choose to instead conform with RFC 6962. static-ct-api logs must not
+specify a MMD greater than 1 minute. RFC 6962 logs must not specify a MMD
+greater than 4 hour.
 
 ---
 
@@ -107,15 +107,18 @@ with this policy. Log operators must:
     * Log availability is measured on a per-endpoint basis over a 90-day rolling
       average from all requests made to the log by the Chrome team's compliance
       monitoring infrastructure. The log's overall availability is represented
-      by the minimum of all per-endpoint availabilities.
+      by the minimum of all per-endpoint availabilities (excluding
+      `get-entry-and-proof` and `add-chain` for RFC 6962 logs).
     * Behavior that results in reduced availability includes, but is not limited
       to: network level outages, expiration of the log's SSL certificate, a
       failure to accept new Certificates to be logged (with the exception of the
       conditions defined in the Logging Submission Policy section below),
       HTTP response status codes other than 200, or responses that include data
-      that does not conform to the log's corresponding API specification.
+      that does not conform to the log's corresponding API specification such as
+      serving an STH with a timestamp older than one MMD.
 * Ensure their logs conform to the totality of the API specification indicated
-  in the log's application.
+  in the log's application, except as outlined below.
+* Ensure that logs serve STHs that are no more `max(1 hour, MMD)` old.
 * Maintain the append-only property of the log by providing consistent views of
   the Merkle Tree at all times and to all parties.
 * Not impose conditions on retrieving or sharing data from the logs.
@@ -267,6 +270,8 @@ Root Certificate based on one or more of the following conditions:
 * **TLS Server Auth EKU:** The log may reject logging submissions for
   certificates that do not contain the `id-kp-serverAuth` Extended Key Usage
   (EKU).
+* **Final certificates to RFC 6962 logs:** RFC 6962 logs may reject all
+  submissions for final certificates received on/after November 1, 2026.
 
 The primary purpose of allowing rejection of certain logging submissions is to
 provide log operators with greater control over the growth and operation of
@@ -323,6 +328,11 @@ Operators must also ensure that well-behaved clients retrieving entries have a
 sufficient opportunity to catch up with growth that occurred during periods of
 global rate limiting. Operators are encouraged to ensure sufficiently high
 limits such that clients can catch up in a reasonable period of time.
+
+To further ensure clients can catch up to a growing log, starting January 1,
+2027, all static-ct-api logs trusted by Chrome must ensure that a well-behaved
+client can reliably retrieve log entries at a rate greater than 1.5x the growth
+rate of the log.
 
 If a log is unable to provide sufficient `get-entries` capacity to ensure these
 requirements, operators should apply rate limiting to `add-chain` and
