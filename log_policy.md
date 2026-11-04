@@ -114,10 +114,11 @@ with this policy. Log operators must:
       failure to accept new Certificates to be logged (with the exception of the
       conditions defined in the Logging Submission Policy section below),
       HTTP response status codes other than 200, or responses that include data
-      that does not conform to the log's corresponding API specification.
+      that does not conform to the log's corresponding API specification such as
+      serving an STH with a timestamp older than one MMD.
 * Ensure their logs conform to the totality of the API specification indicated
   in the log's application, except as outlined below.
-* Ensure that logs serve STHs that are no more than 1 hour old.
+* Ensure that logs serve STHs that are no more `max(1 hour, MMD)` old.
 * Maintain the append-only property of the log by providing consistent views of
   the Merkle Tree at all times and to all parties.
 * Not impose conditions on retrieving or sharing data from the logs.
