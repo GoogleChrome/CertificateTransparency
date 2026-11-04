@@ -118,7 +118,7 @@ with this policy. Log operators must:
       serving an STH with a timestamp older than one MMD.
 * Ensure their logs conform to the totality of the API specification indicated
   in the log's application, except as outlined below.
-* Ensure that logs serve STHs that are no more `max(1 hour, MMD)` old.
+* Ensure that logs serve STHs that are no more than `max(1 hour, MMD)` old.
 * Maintain the append-only property of the log by providing consistent views of
   the Merkle Tree at all times and to all parties.
 * Not impose conditions on retrieving or sharing data from the logs.
