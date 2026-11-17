@@ -248,6 +248,16 @@ their removal from CCADB reports so as to avoid availability, reliability, or
 accuracy issues in the CCADB report compromising the availability of dependent
 logs.
 
+Notwithstanding the above, logs that are `Pending`, `Qualified`, or `Usable`
+must only include a root certificate in their set of accepted root certificates
+if its public key is RSA or ECDSA. Root certificates with any other public key,
+including post-quantum or composite/hybrid keys (such as ML-DSA or SLH-DSA),
+must not be included. This applies even if such roots are permitted by other
+standards or root program policies, or appear in the CCADB reports above. If a
+prohibited root is added (for example, inadvertently via automated CCADB
+synchronization), the operator must promptly remove it. Logs that fail to comply
+may be removed from Chrome's log list.
+
 ### Rejecting Logging Submissions
 CT logs are permitted to reject logging submissions for certificates that meet
 certain conditions, such as being expired or revoked at the time the submission
@@ -272,6 +282,12 @@ Root Certificate based on one or more of the following conditions:
   (EKU).
 * **Final certificates to RFC 6962 logs:** RFC 6962 logs may reject all
   submissions for final certificates received on/after November 1, 2026.
+* **Unsupported Algorithms:** The log should reject logging submissions in which
+  any certificate in the chain has a public key other than RSA or ECDSA, or is
+  signed with an algorithm other than RSA or ECDSA. This includes post-quantum
+  and composite/hybrid algorithms such as ML-DSA and SLH-DSA. Effective December
+  15, 2026, `Pending`, `Qualified`, and `Usable` logs must reject such
+  submissions.
 
 The primary purpose of allowing rejection of certain logging submissions is to
 provide log operators with greater control over the growth and operation of
